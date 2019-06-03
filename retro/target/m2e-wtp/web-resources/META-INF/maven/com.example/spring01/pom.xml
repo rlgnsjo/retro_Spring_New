@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion> <!-- pom 모델 버전 -->
-	<groupId>com.retro</groupId> <!-- 프로젝트의 소유자인 조직, 기관 id(네임스페이스) -->
-	<artifactId>retro</artifactId> <!-- 프로젝트 id -->
+	<groupId>com.example</groupId> <!-- 프로젝트의 소유자인 조직, 기관 id(네임스페이스) -->
+	<artifactId>spring01</artifactId> <!-- 프로젝트 id -->
 	<packaging>war</packaging>  <!-- 패키징 방식, 기본값 jar, 웹애플리케이션의 경우 war -->
 	<version>1.0.0</version> <!-- 프로젝트 버전 -->
 	<properties>
@@ -11,7 +11,7 @@
 		<!-- 2019년 1월 현재 최신 버전 5.1.4, 에러가 날 경우 호환성을 위해 버전을 내려야 함 -->
 		<org.springframework-version>5.1.4.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.9.2</org.aspectj-version>
-		<org.slf4j-version>1.7.25</org.slf4j-version> 
+		<org.slf4j-version>1.7.25</org.slf4j-version>
 	</properties>
 	<repositories>
 		<repository>
@@ -20,22 +20,6 @@
 		</repository>
 	</repositories>
 	<dependencies>
-			
-	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok 추가  -->
-		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
-		    <version>1.18.8</version>
-		    <scope>provided</scope>
-		</dependency>
-
-	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.9.4</version>
-		</dependency>
-	
 	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>

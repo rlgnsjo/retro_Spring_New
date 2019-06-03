@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/section.css?v=1">
+<link rel="stylesheet" href="resources/css/section.css?v=1">
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,8 +16,8 @@
 		<div class="gallery">
 			<ul>
 				<li>
-					<c:forEach items="${bestList}" var="best">
-						<a href="#"><img src="images/${best.p_img}" target="_blank "></a>
+					<c:forEach items="${pLists.bList}" var="best">
+						<a href="#"><img src="resources/images/${best.p_img}" target="_blank "></a>
 					</c:forEach>
 				</li>
 			</ul>
@@ -32,8 +32,8 @@
 
 		<div class="gallery">
 			<ul>
-				<c:forEach items="${newList}" var="sin">
-					<a href="#"><img src="images/${sin.p_img}" target="_blank "></a>
+				<c:forEach items="${pLists.nList}" var="sin">
+					<a href="#"><img src="resources/images/${sin.p_img}" target="_blank "></a>
 					</c:forEach>
 			</ul>
 
@@ -46,8 +46,8 @@
 		
 		<div class="gallery">
 			<ul>
-			<c:forEach items="${viewList}" var="cnt">
-						<a href="#"><img src="images/${cnt.p_img}" target="_blank "></a>
+			<c:forEach items="${pLists.vList}" var="cnt">
+						<a href="#"><img src="resources/images/${cnt.p_img}" target="_blank "></a>
 					</c:forEach>
 			
 			</ul>

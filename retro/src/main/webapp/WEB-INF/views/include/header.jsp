@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${path}/css/common.css?v=1">
-<link rel="stylesheet" href="${path}/css/header.css?v=1">
+<link rel="stylesheet" href="resources/css/common.css?v=1">
+<link rel="stylesheet" href="resources/css/header.css?v=1">
 <title>Insert title here</title>
 </head>
 <body>
 	<div id="modal">
 		<div id="modal_login">
 			<header>
-			<div class="header_logo"><img alt="네이버로고" src="images/피앙세.png"></div>
+			<div class="header_logo"><img alt="네이버로고" src="resources/images/피앙세.png"></div>
 		</header>
 		<section>
 			<div class="input_tag">
@@ -76,16 +76,16 @@
 	</button></a></li>
 			<c:choose>
 				<c:when test="${empty sessionScope.loginUser}" >
-					<li><a href="${path}/constract.retro" id="login_btn">회원가입</a></li>
+					<li><a href="resources/constract.retro" id="login_btn">회원가입</a></li>
 					<li><a id="modal_open">로그인</a><%-- <a href="${path}/loginPage.retro">로그인</a> --%></li>
 				</c:when>
 				<c:otherwise>
 					<li style="color:white"><a href="#" style="color:#FFB6C1">${sessionScope.loginUser.name}</a>(${sessionScope.loginUser.id})</li>
 					 <%-- a href="${path}/loginOutAjax.retro"  --%>
 					<li><a href="#" class="logout_btn">로그아웃</a></li>
-					<li><a href="${path}/pwUpdate.retro">비밀번호수정</a></li>
-					<li><a href="${path}/infoUdate.retro">내정보수정</a></li>
-					<li><a href="${path}/dropMember.retro">회원 탈퇴</a></li>
+					<li><a href="resources/pwUpdate.retro">비밀번호수정</a></li>
+					<li><a href="resources/infoUdate.retro">내정보수정</a></li>
+					<li><a href="resources/dropMember.retro">회원 탈퇴</a></li>
 				</c:otherwise>
 			</c:choose>					
 			</ul>
@@ -93,7 +93,7 @@
 	</div>		
 	<div class="header_logo">		
 		<div class="inner_header">
-			<img src="${path}/images/피앙세.png" alt="로고이미지">
+			<img src="resources/images/피앙세.png" alt="로고이미지">
 		</div>
 	</div>
 	<div class="header_nav">
@@ -160,7 +160,7 @@
 					</li>
 					<li class="dropdown"><a href="#"> 게시판 </a>
 						<div class= "dropdown_content">
-						 	<a href= "${path}/viewtable.retro">게시판</a>		
+						 	<a href= "resources/viewtable.retro">게시판</a>		
 						 	 <!--1. 해당 버튼 클릭시 해당경로로 이동  경로 이동할때 반드시 web,xml이동 -->				 				 		
 						</div>
 					</li>

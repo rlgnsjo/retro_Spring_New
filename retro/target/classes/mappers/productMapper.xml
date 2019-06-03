@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="pdt">
+  		<!-- 베스트 상품 목록 -->
+  	<select id="bestList" resultType="com.retro.domain.product.ProductDTO">
+  		<![CDATA[
+     	SELECT *
+		FROM (SELECT * FROM tbl_product 
+     	      ORDER BY p_good DESC)
+ 	    WHERE rownum <= 4
+ 	  ]]>  	 	
+  	</select>
+  		<!-- 신상품 목록 -->
+  	<select id="newList" resultType="com.retro.domain.product.ProductDTO">
+  		 <![CDATA[
+     	SELECT *
+		FROM (SELECT * FROM tbl_product 
+        ORDER BY p_indate asc)
+ 	    WHERE rownum <= 4
+ 	  ]]> 	
+  	</select> 
+  	<select id="viewList" resultType="com.retro.domain.product.ProductDTO">
+     <![CDATA[
+     	SELECT *
+		FROM (SELECT * FROM tbl_product 
+        ORDER BY p_cnt DESC)
+ 	    WHERE rownum <= 4
+ 	  ]]>   
+     </select>
+  	
+  	 
+  </mapper>

@@ -5,7 +5,7 @@
 
 <c:set var="path" value= "${pageContext.request.contextPath}"/>
  <!--favicon -->
- <link rel="icon" type="images/png" href="images/로고.png"> 
+ <link rel="icon" type="resources/images/png" href="resources/images/로고.png"> 
  <!--font awesome  -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <!-- jquery -->
