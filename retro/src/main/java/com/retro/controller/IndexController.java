@@ -29,9 +29,10 @@ public class IndexController {
 	@RequestMapping("/")  // 경로 설정 어노테이션!
 	public String index(Model model) {
 		log.info(">>>>>>>> Index 페이지");
-		HashMap<String,List<ProductDTO>> map = service.productList();	
+		HashMap<String, List<ProductDTO>> map = service.productList();	
 		
-		model.addAttribute("pLists", map);
+		model.addAttribute("pLists", map);  // plsts에는 현재 총12개의 사진이 걸려있음.
+		                                    
 		
 		return "index";
 	}

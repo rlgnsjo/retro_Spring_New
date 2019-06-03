@@ -149,7 +149,7 @@ function ajaxCheck(memId) {
 	// 전달데이터:  memId 데이터를 id변수에 담아 전달
 	// 데이터 포장방법 : json, 데이터 전달방법 POST방식
 	$.ajax({
-		url: "idCheck.retro",
+		url: "idcheck",
 		type: "POST",
 		dataType: "json",
 		data: "id="+memId,
@@ -158,7 +158,7 @@ function ajaxCheck(memId) {
 			
 			//30.     data.message의 값이 -1이면 => 중복메세지 출력
 			//	   data.message의 값이 1이면 => 사용가능메세지 출력	
-			if(data.message == "-1"){
+			if(data == 1){
 				$(".error_next_box").eq(0).text("이미 사용중인 아이디 입니다.")
 				                          .css("display", "block")	
 				                          .css("color", "tomato");		

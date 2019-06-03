@@ -7,11 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-@NoArgsConstructor // 기본생성자
-@AllArgsConstructor // 기본생성자
-@Getter  // getter()
-@Setter  // setter()
-@ToString // toString()
+@NoArgsConstructor  // 기본생성자 생성
+@AllArgsConstructor  // 전체생성자 생성
+@Getter   // getter
+@Setter  // setter
+@ToString  // tostring
 public class MemberDTO {
 	private String id; 
 	private String pw; 

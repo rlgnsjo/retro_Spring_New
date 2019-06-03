@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"  %>
+ <%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"  %>
 
+<c:set var="path" value= "${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>	
@@ -37,7 +40,7 @@
 	  	display: block;
 	  	width: 240px;
 	  	height: 44px;
-	  	background: url("img/pc_sp_join.png")0 -106px; 
+	  	background: url('${path}/resources/images/피앙세리뉴.png') -124px; 
 	  	margin: auto;
 	  	box-sizing: border-box;
 	  }
@@ -459,7 +462,7 @@
 				var must1 = $('#li1box').is(':checked');  		
 				var must2 = $('#li2box').is(':checked');
 				if (must1 == true && must2 == true) {
-					location.href= "member.retro";
+					location.href= "${path}/member/create";
 				}else {
 					$("#err_check").css("display", "block");
 					return false;

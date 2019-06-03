@@ -22,7 +22,7 @@
 				</li>
 			</ul>
 			<div class="desc">
-				<a href="#">
+				<!-- <a href="#"> -->
 				<h2>BEST CHANEL LOOK</h2></a>
 						
 			<!-- 	<p id="gucci">EXO KAI is best guc</p> -->
@@ -47,7 +47,7 @@
 		<div class="gallery">
 			<ul>
 			<c:forEach items="${pLists.vList}" var="cnt">
-						<a href="#"><img src="resources/images/${cnt.p_img}" target="_blank "></a>
+						<a href="#"><img src="resources/images/${cnt.p_img}" target="_blank"></a>
 					</c:forEach>
 			
 			</ul>

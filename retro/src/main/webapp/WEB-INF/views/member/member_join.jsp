@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"  %>
+ <%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"  %>
+
+<c:set var="path" value= "${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="${path}/css/common.css?v=1">
+	<link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<title>회원가입</title>
 	<style type="text/css">
@@ -44,7 +48,7 @@
 		display: block;
 		width: 310px;
 		height: 150px;
-		background: url('images/피앙세리뉴.png');
+		background: url('${path}/resources/images/피앙세리뉴.png');
 		margin: auto;
 	}
 	/* 회원가입 정보 */
@@ -124,7 +128,7 @@
 		padding: 11px 14px;
 	}
 	.sel {
-		background: #fff url('img/sel_arr.gif') 100% 50% no-repeat;
+		background: #fff url('${path}/resources/images/sel_arr.gif') 100% 50% no-repeat;
 		width: 100%;
 		height: 29px;
 		font-size: 15px;
@@ -451,7 +455,7 @@
 				<div class="address">
 					<span>
 						<a href="#">
-							<img class="addr_logo" alt="피앙새 로고" src="images/피앙새로고.png">
+							<img class="addr_logo" alt="피앙새 로고" src="${path}/resources/images/피앙세.png">
 						</a>
 					</span>
 					<span>copyright</span>
@@ -462,7 +466,7 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="js/validation.js"></script>
+		<script type="text/javascript" src="${path}/resources/js/validation.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 		
 		<script type="text/javascript">
 		

@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/common.css?v=1">
-<link rel="stylesheet" href="resources/css/header.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/common.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/header.css?v=1">
 <title>Insert title here</title>
 </head>
 <body>
 	<div id="modal">
 		<div id="modal_login">
 			<header>
-			<div class="header_logo"><img alt="네이버로고" src="resources/images/피앙세.png"></div>
+			<div class="header_logo"><img alt="네이버로고" src="${path}/resources/images/피앙세.png"></div>
 		</header>
 		<section>
 			<div class="input_tag">
@@ -76,7 +76,7 @@
 	</button></a></li>
 			<c:choose>
 				<c:when test="${empty sessionScope.loginUser}" >
-					<li><a href="resources/constract.retro" id="login_btn">회원가입</a></li>
+					<li><a href="${path}/member/constract" id="login_btn">회원가입</a></li>
 					<li><a id="modal_open">로그인</a><%-- <a href="${path}/loginPage.retro">로그인</a> --%></li>
 				</c:when>
 				<c:otherwise>

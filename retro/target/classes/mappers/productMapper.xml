@@ -22,6 +22,7 @@
  	    WHERE rownum <= 4
  	  ]]> 	
   	</select> 
+  	
   	<select id="viewList" resultType="com.retro.domain.product.ProductDTO">
      <![CDATA[
      	SELECT *
