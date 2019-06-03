@@ -59,7 +59,7 @@
 	  	border:1px solid #ccc;
 	  }
 	  .lang>select {
-	  		background: url('img/sel_arr.gif')100% 50% no-repeat;
+	  		background: url('${path}/resources/images/sel_arr.gif')100% 50% no-repeat;
 	  		-webkit-appearance:none;
 	  		width: 98px;
 	  		height: 30px;
@@ -92,7 +92,7 @@
 	  	position: relative;
 	  }
 	  .terms_span > label {
-	  	background: url('img/check_off.gif')100% 50% no-repeat;
+	  	background: url('${path}/resources/images/check_off.gif')100% 50% no-repeat;
 	  	display: block;
 	  	line-height: 20px;
 	  	height: 58px;
@@ -107,7 +107,7 @@
 	   }
 
 	   .terms_span > input:checked +label {
-	   	background: url('img/check_on.gif')100% 50% no-repeat;
+	   	background: url('${path}/resources/images/check_on.gif')100% 50% no-repeat;
 	   }
 	   .terms_ul {
 	   	padding-bottom: 7px;
@@ -151,11 +151,11 @@
 			top: 50%;
 		}
 		.ul_li_span > label {
-			background: url('img/check_off.gif')100% 50% no-repeat;
+			background: url('${path}/resources/images/check_off.gif')100% 50% no-repeat;
 			display: block;
 		}
 		.ul_li_span > input:checked +label {
-			background-image: url('img/check_on.gif');
+			background-image: url('${path}/resources/images/check_on.gif');
 		}
 		.terms_box{
 			position: relative;
