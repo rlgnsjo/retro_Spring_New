@@ -87,9 +87,7 @@ public class MemberController {
 		}
 				
 	}
-	
-
-	
+		
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
