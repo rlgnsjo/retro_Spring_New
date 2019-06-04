@@ -127,7 +127,7 @@
 	.join_birthday .ps_box{
 		padding: 11px 14px;
 	}
-	.sel {
+	.select_box {
 		background: #fff url('${path}/resources/images/sel_arr.gif') 100% 50% no-repeat;
 		width: 100%;
 		height: 29px;
@@ -252,7 +252,7 @@
 		</div>
 	</header>
 	<section>
-		<form class="join_form" method="POST" action="memberplay.retro">
+		<form class="join_form" method="POST" action="${path}/member/create">
 		<div class="container">
 			<div class="join_content">
 				<div class="row_group">
@@ -272,7 +272,7 @@
 							<label for="pswd1">비밀번호</label>							
 						</h3>
 						<span class="ps_box int_pass">
-							<input type="password" id="pswd1" name="pswd1" class="int" maxlength="20" placeholder="숫자영문 조합 8~16글자">
+							<input type="password" id="pswd1" name="pw" class="int" maxlength="20" placeholder="숫자영문 조합 8~16글자">
 							<span class="step_url"><i class="fas fa-unlock"></i></span>
 						</span>
 						<span class="error_next_box">필수 정보입니다.</span> 
@@ -280,7 +280,7 @@
 							<label for="pswd2">비밀번호 재확인</label>							
 						</h3>
 						<span class="ps_box int_pass">
-							<input type="password" id="pswd2" name="pswd2" class="int" maxlength="20"placeholder="패스워드를 다시 입력해주세요.">
+							<input type="password" id="pswd2"  class="int" maxlength="20"placeholder="패스워드를 다시 입력해주세요.">
 							<span class="step_url"><i class="fas fa-unlock-alt"></i></span>
 						</span>
 						<span class="error_next_box">필수 정보입니다.</span>
@@ -380,20 +380,21 @@
 					<div class="bir_wrap">						
 						<div class="bir_mm">
 							<span class="ps_box">
-								<input type="text" id="name" name="email1" class="int" maxlength="20">							
+								<input type="text" id="email_id" name="email_id" class="int" maxlength="20">							
 							<span class="error_next_box">필수 정보입니다.</span>	
 							</span>
 						</div>
 						<div class="bir_dd">
 							<span class="ps_box">
 								<!-- <input type="text" id="dd" placeholder="일" class="int" maxlength="2"> -->
-								<select name="email2" class="sel" id="dd">
-										<option value="직접입력">직접입력</option>															
-										<option value="naver.com(네이버)">@naver.com(네이버)</option>
-										<option value="daum.net(다음카카오)">@daum.net(다음카카오)</option>
-										<option value="gmail.com(구글)">@gmail.com(구글)</option>
-										<option value="nate.com(네이트)">@nate.com(네이트)</option>			
+								<select name="email2" class="select_box" id="dd">
+										<option>직접입력</option>															
+										<option value="naver.com">@naver.com(네이버)</option>
+										<option value="daum.net">@daum.net(다음카카오)</option>
+										<option value="gmail.com">@gmail.com(구글)</option>
+										<option value="nate.com">@nate.com(네이트)</option>											
 								</select>
+								<input type="hidden" id="email" name="email"> 	
 							</span>
 						</div>	
 
@@ -419,7 +420,7 @@
 					</div>
 					<div class="bir_wrap">
 						<div class="bir_add">										
-							<input type="text"  name="addr" id="sample6_postcode" class="addrbtn" placeholder="우편번호"readonly="readonly" >
+							<input type="text"  name="zipcode" id="sample6_postcode" class="addrbtn" placeholder="우편번호"readonly="readonly" >
 							<input type="button" class="shy_btn" onclick="sample6_execDaumPostcode()" id="addr_btn" value="우편번호 찾기" ><br>
 							<input type="text" name="addr1" id="sample6_address" placeholder="일반주소 입력" class="addrbtn" readonly="readonly">
 							<input type="text"  name="addr2" id="sample6_detailAddress" placeholder="상세주소 입력">							
@@ -472,7 +473,14 @@
 		
 			$(document).ready(function(){	
 				$('.btn_agree').click(function(){
-					$('join_form')
+					var email_id = $('#email_id').val();
+					var email_url = $('.select_box').val();
+					
+					alert(email_id + ", " + email_url);
+					email = email_id + "@" + email_url;
+					$('#email').val(email);	
+									
+					$('join_form').submit();
 				});
 				
 				

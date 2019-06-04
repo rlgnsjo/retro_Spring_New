@@ -5,15 +5,30 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-@Repository
+import com.retro.domain.member.MemberDTO;
+
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
+@Repository  // 해당 class가 dao작업을 하는 class 라는것을 명시!
 public class MemberDAOImpl implements MemberDAO{
 
 	@Inject 
 	private SqlSession sqlSession;
+	
 	@Override
 	public int idCheck(String id) {
 		
-		return sqlSession.selectOne("idCheck", id);
+		return sqlSession.selectOne("member.idCheck", id);
+	}
+	@Override
+	public int create(MemberDTO mDto) {
+		
+		return sqlSession.insert("member.create", mDto);
+	}
+	@Override
+	public String login(MemberDTO mDto) {
+		return sqlSession.selectOne("member.login", mDto);	
+		
 	}
 
 }

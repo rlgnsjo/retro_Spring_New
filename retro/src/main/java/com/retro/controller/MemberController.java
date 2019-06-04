@@ -1,12 +1,14 @@
 package com.retro.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.retro.domain.member.MemberDTO;
 import com.retro.service.member.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,24 @@ public class MemberController {
 	
 	@Inject
 	private MemberService service; 
+	
+	@ResponseBody
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(MemberDTO mDto, HttpSession session) {
+		log.info(">>>>>>>> AJAX:로그인");
+		
+		boolean result = service.login(mDto, session);  // boolean 논리 자료형이니 true와 false만 들어감.
+		String flag ="-1";
+		if(result) {
+			flag ="1";
+		}
+		
+		return flag;
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/constract", method = RequestMethod.GET)
 	public String constract() {
@@ -32,12 +52,36 @@ public class MemberController {
 		return service.idCheck(id);
 	}
 	
-	
+	// 회원가입 페이지 출력
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String create() {
+	public String createview() {
 		log.info(">>>>>>>>회원 가입 페이지 출력");
 		return "member/member_join";
 	}
+	
+	// DB를 통한 회원가입 액션 .
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public String createplay(MemberDTO mDto) {
+		
+		log.info(">>>>>>>>DB를 통한 회원 가입 액션");
+		
+		log.info(mDto.toString());
+		
+		int result = service.create(mDto);
+		
+		if (result > 0) {
+			log.info("가입 성공!");
+			return "redirect:/";
+		} else {
+			log.info("가입 실패!");
+			return "/member/constract";
+		}
+				
+	}
+	
+
+	
+	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update() {
 		log.info(">>>>>>>>회원 수정.");

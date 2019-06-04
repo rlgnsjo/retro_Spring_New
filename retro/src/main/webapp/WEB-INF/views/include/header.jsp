@@ -75,12 +75,12 @@
 		<i class="fas fa-arrow-up"></i>				
 	</button></a></li>
 			<c:choose>
-				<c:when test="${empty sessionScope.loginUser}" >
+				<c:when test="${empty sessionScope.name}" >
 					<li><a href="${path}/member/constract" id="login_btn">회원가입</a></li>
 					<li><a id="modal_open">로그인</a><%-- <a href="${path}/loginPage.retro">로그인</a> --%></li>
 				</c:when>
 				<c:otherwise>
-					<li style="color:white"><a href="#" style="color:#FFB6C1">${sessionScope.loginUser.name}</a>(${sessionScope.loginUser.id})</li>
+					<li style="color:white"><a href="#" style="color:#FFB6C1">${sessionScope.name}</a>(${sessionScope.userid})</li>
 					 <%-- a href="${path}/loginOutAjax.retro"  --%>
 					<li><a href="#" class="logout_btn">로그아웃</a></li>
 					<li><a href="resources/pwUpdate.retro">비밀번호수정</a></li>
@@ -221,14 +221,14 @@
 						}
 						
 						$.ajax({
-							url: "login.retro",
+							url: "${path}/member/login",
 							type: "POST",
-							dataType: "json",
+							dataType: "text", // ajax 처리후 받을데이터 success: function(data)의 데이터를 반환받음.
 							data: "id="+id+"&pw="+pw,
 							success: function(data) {
-								if(data.message == "1") {
+								if(data == "1") {
 									location.reload();			
-								} else if(data.message == "-1") {
+								} else if(data == "-1") {
 									$('#login_id').select();
 									$('.err_msg').text('회원 아이디 또는 비밀번호가 일치하지 않습니다.')
 									             .css('display', 'block');
