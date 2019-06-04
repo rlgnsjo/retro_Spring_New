@@ -160,6 +160,20 @@
 		border: 1px solid #FFD8D8;
 		background-color: #FFD8D8;
 	}
+	.btn_agree{
+		width: 465px;
+		margin: 0 5px;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 61px;
+		display: block;
+		height: 61px;
+		padding-top: 1px;
+		text-align: center;
+		color: #fff;
+		border: 1px solid #FFD8D8;
+		background-color: #FFD8D8;
+	}
 	.footer_wrap > ul {
 			list-style: none;
 			margin: 0 auto 9px;			
@@ -434,7 +448,7 @@
 
 				<div class="btn_double_area">
 					<span>
-						<input type="submit" class="btn_type btn_agree">가입하기</input>
+						<input type="submit" class="btn_type btn_agree" placeholder="가입하기"></input>
 					</span>
 																
 				</div>
