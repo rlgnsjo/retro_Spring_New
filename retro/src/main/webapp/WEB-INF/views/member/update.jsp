@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>   
+ <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"  %>
+ <%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"  %>
+<c:set var="path" value= "${pageContext.request.contextPath}"/>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +46,7 @@
 		display: block;
 		width: 310px;
 		height: 150px;
-		background: url('images/피앙세리뉴.png');
+		background: url('${path}/resources/images/피앙세리뉴.png');
 		margin: auto;
 	}
 	/* 회원가입 정보 */
@@ -239,7 +242,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script type="text/javascript">
 	$(document).ready(function(){
-		var email= "${sessionScope.loginUser.email}";
+		var email= "${one.email}";
 		
 		var index = email.indexOf('@');
 		var emailid = email.substring(0, index);
@@ -288,14 +291,14 @@
 						</h3>
 						<span class="ps_box int_id">
 							<input type="text" id="id" name="id" class="int"
-							 maxlength="20" readonly="readonly" value="${sessionScope.loginUser.id}">
+							 maxlength="20" readonly="readonly" value="${one.id}">
 							<span class="step_url">@fiance.com</span>
 							
 						</span>
 						<span class="error_next_box">필수 정보입니다.</span>
 					</div>
 
-										
+										<!-- sessionScope.loginUser -->
 			
 
 					<div class="row_group">  
@@ -305,7 +308,7 @@
 							</h3>
 							<span class="ps_box">
 								<input type="text" id="name" name="name" placeholder="예시:홍길동"
-								 class="int" maxlength="20" value="${sessionScope.loginUser.name}">							
+								 class="int" maxlength="20" value="${one.name}">							
 								
 							</span>
 							<span class="error_next_box">필수 정보입니다.</span>
@@ -321,7 +324,7 @@
 					<div class="bir_wrap">						
 						<div class="bir_mm">
 							<span class="ps_box">
-								<input type="text" id="email_id" name="email1" 
+								<input type="text" <%-- value="${one.email}"  --%>id="email_id" name="email1" 
 								class="int" maxlength="20">							
 								
 							</span>
@@ -346,7 +349,7 @@
 							</h3>
 							<span class="ps_box">
 								<input type="text" id="phone" name="phone" 
-								class="int" placeholder="숫자만 입력가능" maxlength="11" value="${sessionScope.loginUser.phone}">
+								class="int" placeholder="숫자만 입력가능" maxlength="11" value="${one.phone}">
 
 							</span>
 							<span class="error_next_box">필수 정보입니다.</span>
@@ -362,11 +365,11 @@
 					</div>
 					<div class="bir_wrap">
 						<div class="bir_add">										
-							<input type="text" name="addr" id="sample6_postcode" placeholder="우편번호" value="${sessionScope.loginUser.zipcode }">
+							<input type="text" name="addr" id="sample6_postcode" placeholder="우편번호" value="${one.zipcode }">
 
 							<input type="button" class="shy_btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" name="addr1" id="sample6_address" placeholder="일반주소 입력" value="${sessionScope.loginUser.addr1 }">
-							<input type="text" name="addr2" id="sample6_detailAddress" placeholder="상세주소 입력" value="${sessionScope.loginUser.addr2 }">							
+							<input type="text" name="addr1" id="sample6_address" placeholder="일반주소 입력" value="${one.addr1 }">
+							<input type="text" name="addr2" id="sample6_detailAddress" placeholder="상세주소 입력" value="${one.addr2 }">							
 						</div>
 						
 										
@@ -402,7 +405,7 @@
 				<div class="address">
 					<span>
 						<a href="#">
-							<img class="addr_logo" alt="피앙새 로고" src="images/피앙새로고.png">
+							<img class="addr_logo" alt="피앙새 로고" src="${path}/resources/image/피앙새로고.png">
 						</a>
 					</span>
 					<span>copyright</span>

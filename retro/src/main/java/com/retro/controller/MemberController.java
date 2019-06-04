@@ -4,9 +4,11 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.retro.domain.member.MemberDTO;
 import com.retro.service.member.MemberService;
@@ -34,10 +36,16 @@ public class MemberController {
 		
 		return flag;
 	}
+	@ResponseBody
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)  // 로그인정보가 session에 담아있으니
+		public void logout(HttpSession session){	            	 // session 부분만 확인하면된다.		
+		log.info(">>>>>>>로그아웃");
+		service.logout(session);
+		
+	}
 	
 	
-	
-	
+
 	
 	@RequestMapping(value = "/constract", method = RequestMethod.GET)
 	public String constract() {
@@ -61,7 +69,7 @@ public class MemberController {
 	
 	// DB를 통한 회원가입 액션 .
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createplay(MemberDTO mDto) {
+	public String createplay(MemberDTO mDto, RedirectAttributes rttr) {
 		
 		log.info(">>>>>>>>DB를 통한 회원 가입 액션");
 		
@@ -71,6 +79,7 @@ public class MemberController {
 		
 		if (result > 0) {
 			log.info("가입 성공!");
+			/* rttr.addFlashAttribute("message", "1회성 데이터"); */
 			return "redirect:/";
 		} else {
 			log.info("가입 실패!");
@@ -83,10 +92,15 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update() {
-		log.info(">>>>>>>>회원 수정.");
-		return "";
+	public String update(HttpSession session, Model model) {
+		log.info(">>>>>>>>회원 수정페이지 출력");
+				
+		MemberDTO mDto = service.viewMember(session);
+	    model.addAttribute("one", mDto);
+	 
+		return "member/update";
 	}
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete() {
 		log.info(">>>>>>>>회원 삭제.");

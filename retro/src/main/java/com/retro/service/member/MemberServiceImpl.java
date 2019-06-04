@@ -44,7 +44,9 @@ public class MemberServiceImpl implements MemberService{
 		if (name != null) { // 로그인 성공
 			// session에 로그인 정보를 담음.
 			// id, name만 담음.
-			session.setAttribute("userid", mDto.getId());
+			session.removeAttribute("userid");
+			session.removeAttribute("name");
+			session.setAttribute("userid", mDto.getId()); //session에 값을담아 view부분에 출력시킴.
 			session.setAttribute("name", name);
 			result = true;
 			log.info("session>" + session.getAttribute("name"));
@@ -52,6 +54,23 @@ public class MemberServiceImpl implements MemberService{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public void logout(HttpSession session) {
+		// 세션 초기화
+		session.invalidate();  // 세션초기화 변수.
+		
+		
+	}
+
+	@Override
+	public MemberDTO viewMember(HttpSession session) {
+	 String id = (String)session.getAttribute("userid");
+	 MemberDTO mDto = mDao.viewMember(id);
+		
+		
+		return mDto;
 	}
 
 }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.retro.domain.member.MemberDTO;
 
-import lombok.extern.slf4j.Slf4j;
-@Slf4j
+
+
 @Repository  // 해당 class가 dao작업을 하는 class 라는것을 명시!
 public class MemberDAOImpl implements MemberDAO{
 
@@ -29,6 +29,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public String login(MemberDTO mDto) {
 		return sqlSession.selectOne("member.login", mDto);	
 		
+	}
+	@Override
+	public MemberDTO viewMember(String id) {
+		
+		return sqlSession.selectOne("member.viewMember", id);
 	}
 
 }

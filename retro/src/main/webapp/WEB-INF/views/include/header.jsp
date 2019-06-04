@@ -73,9 +73,9 @@
 	
 	<button id="topBtn">
 		<i class="fas fa-arrow-up"></i>				
-	</button></a></li>
+	</button></a></li>	
 			<c:choose>
-				<c:when test="${empty sessionScope.name}" >
+				<c:when test="${empty sessionScope.userid}" >				
 					<li><a href="${path}/member/constract" id="login_btn">회원가입</a></li>
 					<li><a id="modal_open">로그인</a><%-- <a href="${path}/loginPage.retro">로그인</a> --%></li>
 				</c:when>
@@ -83,8 +83,9 @@
 					<li style="color:white"><a href="#" style="color:#FFB6C1">${sessionScope.name}</a>(${sessionScope.userid})</li>
 					 <%-- a href="${path}/loginOutAjax.retro"  --%>
 					<li><a href="#" class="logout_btn">로그아웃</a></li>
+					<li><a href="${path}/member/update">내정보수정</a></li>
 					<li><a href="resources/pwUpdate.retro">비밀번호수정</a></li>
-					<li><a href="resources/infoUdate.retro">내정보수정</a></li>
+					
 					<li><a href="resources/dropMember.retro">회원 탈퇴</a></li>
 				</c:otherwise>
 			</c:choose>					
@@ -255,10 +256,9 @@
 					
 					$(document).on('click', '.logout_btn', function(){
 						$.ajax({
-							url: "logoutAjax.retro",
-							type: "POST",
-							dataType: "json",						
-							success: function(data){							 
+							url: "${path}/member/logout",
+							type: "POST",													
+							success: function(){  // 리턴값으로 받을값이 없으니 fuction 가운데에 date가 있다.							 
 								location.reload();
 							},
 							error:function() {
