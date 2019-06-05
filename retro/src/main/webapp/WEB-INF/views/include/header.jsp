@@ -84,9 +84,8 @@
 					 <%-- a href="${path}/loginOutAjax.retro"  --%>
 					<li><a href="#" class="logout_btn">로그아웃</a></li>
 					<li><a href="${path}/member/update">내정보수정</a></li>
-					<li><a href="resources/pwUpdate.retro">비밀번호수정</a></li>
-					
-					<li><a href="resources/dropMember.retro">회원 탈퇴</a></li>
+					<li><a href="${path}/member/pwupdate">비밀번호수정</a></li>					
+					<li><a href="${path}/member/delete">회원 탈퇴</a></li>
 				</c:otherwise>
 			</c:choose>					
 			</ul>

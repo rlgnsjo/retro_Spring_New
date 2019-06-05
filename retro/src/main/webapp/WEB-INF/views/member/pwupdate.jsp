@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"  %>
+ <%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"  %>
+
+<c:set var="path" value= "${pageContext.request.contextPath}"/>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +47,7 @@
 		display: block;
 		width: 310px;
 		height: 150px;
-		background: url('images/피앙세리뉴.png');
+		background: url('${path}/resources/images/피앙세리뉴.png');
 		margin: auto;
 	}
 	/* 회원가입 정보 */
@@ -95,7 +99,7 @@
 		line-height: 18px;
 		color: #8e8e8e;
 	}
-	.pwAjax {
+	.pwAjax { 
 		display: none;
 		margin: 9px 0 -2px;
 		font-size: 12px;
@@ -247,11 +251,11 @@
 		</div>
 	</header>
 	<section>
-		<form class="join_form" method="POST" action="pwUpdatePlay.retro" id="retro_pw">
+		<form class="join_form" method="POST" action="${path}/member/pwupdate" id="frm_mem">
 		<!--인풋태그 아래에 아이디 값을 받아주며 아이디 값은 session에 있으니 
 		session에서 id값을 꺼내주거나 value값에 sessionScope 안에 값을 직접적으로 담아주는 방법이 있다. 
 		input type= "hidden" 은 input 태그 안에 있는 값을 숨겨준다.     -->
-		<input type= "hidden" name ="id"  value="${sessionScope.loginUser.id}">  
+		<input type= "hidden" name ="id"  value="${sessionScope.userid}">  
 		<div class="container">
 			<div class="join_content">
 				<div class="row_group">
@@ -260,7 +264,7 @@
 							<label for="pswd1">비밀번호 수정</label>							
 						</h3>
 						<span class="ps_box int_id">
-							<input type="password" id="pw" name="pw" class="int" maxlength="20" placeholder="숫자영문 조합 8~16글자">
+							<input type="password" id="pw" name="pw1" class="int" maxlength="20" placeholder="숫자영문 조합 8~16글자">
 							<span class="step_url"><i class="fas fa-unlock-alt"></i></span>
 							
 							
@@ -273,7 +277,7 @@
 							<label for="pswd1">비밀번호</label>							
 						</h3>
 						<span class="ps_box int_pass">
-							<input type="password" id="npw" name="npw" class="int" maxlength="20" placeholder="숫자영문 조합 8~16글자">
+							<input type="password" id="npw" name="pw" class="int" maxlength="20" placeholder="숫자영문 조합 8~16글자">
 							<span class="step_url"><i class="fas fa-unlock"></i></span>
 							
 						</span>
@@ -325,7 +329,7 @@
 									<div class="address">
 					<span>
 						<a href="#">
-							<img class="addr_logo" alt="피앙새 로고" src="images/피앙새로고.png">
+							<img class="addr_logo" alt="피앙새 로고" src="${path}/resources/images/피앙새로고.png">
 						</a>
 					</span>
 					<span>copyright</span>
@@ -337,7 +341,7 @@
 								</div>
 							</div>
 						</footer>
-<script type="text/javascript" src="js/validation.js"></script>
+<script type="text/javascript" src="${path}/resources/js/validation.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -348,7 +352,7 @@
 		
 		$('#pw').blur(function(nowId, nowPw){
 			var nowPw = $("#pw").val();
-			var nowId ="${sessionScope.loginUser.id}";								
+			var nowId ="${sessionScope.userid}";								
 			if(nowPw != null || nowPw.length != 0) {
 				currrentPw = ajaxPwCheck(nowId, nowPw);
 				

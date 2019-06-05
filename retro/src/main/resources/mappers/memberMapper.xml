@@ -13,6 +13,18 @@
 	 VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{zipcode}, #{addr1}, #{addr2}) 
      </insert>
      
+       <update id="update" parameterType="com.retro.domain.member.MemberDTO">
+  		UPDATE tbl_member SET
+     	name = #{name},
+     	phone = #{phone},
+     	email = #{email},
+     	zipcode = #{zipcode},
+     	addr1 = #{addr1},
+     	addr2 = #{addr2}
+  	    WHERE id = #{id}	
+ 	 </update>
+     
+     
      <select id="login" parameterType="com.retro.domain.member.MemberDTO" resultType="String">
      SELECT name FROM tbl_member
 	 WHERE id= #{id} AND pw =#{pw}     
@@ -21,5 +33,16 @@
      	 SELECT * FROM tbl_member
 		 WHERE id= #{id}     
      </select>
+  <update id="pwUpdate" parameterType="com.retro.domain.member.MemberDTO">
+  		UPDATE tbl_member 
+  		SET pw = #{pw}
+  		WHERE id = #{id}
+  </update>	 
+		<delete id="delete" parameterType="String">
+     	 DELETE FROM tbl_member
+     	 WHERE id= #{id}    	    
+     </delete>
+  	 
+  	 
   	 
   </mapper>

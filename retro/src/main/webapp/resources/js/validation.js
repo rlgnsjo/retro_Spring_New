@@ -182,13 +182,12 @@ function ajaxCheck(memId) {
 function ajaxPwCheck(nowId, nowPw) {
 	var return_val = false;
 	$.ajax({
-		url: 'pwCheck.retro',
+		url: 'pwcheck?id='+nowId+'&pw='+nowPw,
 		type: 'POST',
 		async: false,
-		dataType: 'json',
-		data: 'id=' +nowId+'&pw='+nowPw,
+		dataType:"text",
 		success: function(data){
-			if(data.flag){				
+			if(data == "1"){				
 				$(".pwAjax").eq(0).css('color','dodgerblue')
 						    	   .css('display','block')
 							 	   .text("비밀번호가 일치합니다.");	

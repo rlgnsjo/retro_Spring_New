@@ -10,5 +10,11 @@ public interface MemberDAO {
 	public String login(MemberDTO mDto);
 	
 	public MemberDTO viewMember(String id);
+	
+	public void pwUpdate(MemberDTO mDto);
+	
+	public int update(MemberDTO mDto);
+	
+	public int delete(String id); 
 
 }

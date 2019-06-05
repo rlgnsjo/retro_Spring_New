@@ -241,6 +241,7 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script type="text/javascript">
+
 	$(document).ready(function(){
 		var email= "${one.email}";
 		
@@ -251,9 +252,7 @@
 
 		$("#email_id").val(emailid);
 		$("#email_url").val(emailurl);
-		
-		
-		
+						
 		if(emailurl=="naver.com"){
 			flag = 1;
 		}else if(emailurl=="daum.net"){
@@ -281,16 +280,17 @@
 		</div>
 	</header>
 	<section>
-		<form class="join_form" method="POST" action="infoUpdatePlay.retro">
+		<form class="join_form" method="POST" action="${path}/member/update">
 		<div class="container">
 			<div class="join_content">
+				<input type="hidden" name="email" id="email_url">
 				<div class="row_group">
 					<div class="join_row">
 						<h3 class="join_title">
 							<label for="id" >아이디</label>							
 						</h3>
 						<span class="ps_box int_id">
-							<input type="text" id="id" name="id" class="int"
+							<input type="text" id="id" class="int"
 							 maxlength="20" readonly="readonly" value="${one.id}">
 							<span class="step_url">@fiance.com</span>
 							
@@ -324,15 +324,15 @@
 					<div class="bir_wrap">						
 						<div class="bir_mm">
 							<span class="ps_box">
-								<input type="text" <%-- value="${one.email}"  --%>id="email_id" name="email1" 
-								class="int" maxlength="20">							
+								<input type="text" id="email_id" 
+								class="int" maxlength="20" name="email">							
 								
 							</span>
 						</div>
 						<div class="bir_dd">
 							<span class="ps_box">
 								<!-- <input type="text" id="dd" placeholder="일" class="int" maxlength="2"> -->
-								<select id="mm" class="sel" name="email2">
+								<select id="mm" class="sel" name="email" >
 										<option value="직접입력">직접입력</option>															
 										<option value="naver.com">@naver.com(네이버)</option>
 										<option value="daum.net">@daum.net(다음카카오)</option>
@@ -365,7 +365,7 @@
 					</div>
 					<div class="bir_wrap">
 						<div class="bir_add">										
-							<input type="text" name="addr" id="sample6_postcode" placeholder="우편번호" value="${one.zipcode }">
+							<input type="text" name="zipcode" id="sample6_postcode" placeholder="우편번호" value="${one.zipcode }">
 
 							<input type="button" class="shy_btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 							<input type="text" name="addr1" id="sample6_address" placeholder="일반주소 입력" value="${one.addr1 }">
@@ -375,10 +375,7 @@
 										
 					</div>
 										
-			
-					
-		
-				
+												
 
 				<div class="btn_double_area">
 					<span class="button_wrap">
