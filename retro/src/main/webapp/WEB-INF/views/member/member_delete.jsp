@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"  %>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"  %>
+<c:set var="path" value= "${pageContext.request.contextPath}"/> 	
 <!DOCTYPE html>
 <html>
 <head>
@@ -419,15 +422,13 @@ input, select {
 								<label for="pswd1">비밀번호재확인</label>
 							</h3>
 							<span class="ps_box int_pass"> <input type="password"
-								id="pw" name="pswd1" class="int" maxlength="20"
+								id="pw" name="pw" class="int" maxlength="20"
 								placeholder="숫자영문 조합 8~16글자"> <span class="step_url"><i
 									class="fas fa-unlock"></i></span>
 
 							</span> <span class="pwAjax">필수 정보입니다.</span>
 
 						</div>
-
-
 
 
 
@@ -466,14 +467,14 @@ input, select {
 			</div>
 		</div>
 	</footer>
-	<script type="text/javascript" src="js/validation.js"></script>
+	<script type="text/javascript" src="${path}/resources/js/validation.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var state = false;
 			
 			$('#pw').blur(function(){
-				var nowId ="${sessionScope.loginUser.id}";	
+				var nowId ="${sessionScope.userid}";	
 				var nowPw = $(this).val();				
 				state = ajaxPwCheck(nowId, nowPw);
 				alert(state);
@@ -487,11 +488,12 @@ input, select {
 					$('#pw').focus;
 				}				
 			});
+			
 			$('.btn_agree').click(function(){
 				/* var id = "${sessionScope.loginUser.id}";	
 				locatin.href= "dropMember.retro"; */
 				
-				location.href="dropMemberPlay.retro";
+				location.href="${path}/member/deleteplay";
 			});
 			
 			
