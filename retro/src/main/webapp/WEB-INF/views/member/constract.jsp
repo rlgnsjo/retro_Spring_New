@@ -196,13 +196,12 @@
 		}
 		.btn_default {
 			color: #333;
-			border: 1px solid #e7e7e7;
-			background-color: #fff;
+			
+			background-color: white;
 		}
 		.btn_agree {
-			color: #fff;
-			border: 1px solid #1fbc02;
-			background-color: #1fbc02;
+			color: white;
+			background-color: #FAE0D4;
 		}
 		.btn_type {
 			width: auto;
@@ -425,12 +424,12 @@
 				<div class="address">
 					<span>
 						<a href="https://www.naver.com/">
-							<img class="addr_logo" alt="네이버 로고" src="img/naver_logo.png">
+							<img class="addr_logo" alt="피앙새 로고" src="img/naver_logo.png">
 						</a>
 					</span>
 					<span>copyright</span>
 					<span>ⓒ</span>
-					<span><strong><a href="#">NAVER .Corp</a></strong> </span>
+					<span><strong><a href="#">a finace .Corp</a></strong> </span>
 					<span>All right Reserved.</span>
 					
 				</div>
