@@ -6,13 +6,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 
-<<<<<<< HEAD
 
 
 
-import com.retro.controller.MemberController;
-=======
->>>>>>> 6f62220f15d533c1874f6c99ffe874728a556aee
+
+
+
 import com.retro.domain.member.MemberDTO;
 import com.retro.persistence.member.MemberDAO;
 
