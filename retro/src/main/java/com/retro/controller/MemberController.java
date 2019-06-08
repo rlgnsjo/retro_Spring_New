@@ -70,7 +70,7 @@ public class MemberController {
 	
 	// DB를 통한 회원가입 액션 .
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createplay(MemberDTO mDto, RedirectAttributes rttr) {
+	public String createplay(MemberDTO mDto) {
 		
 		log.info(">>>>>>>>DB를 통한 회원 가입 액션");
 		

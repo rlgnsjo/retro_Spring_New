@@ -241,7 +241,6 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script type="text/javascript">
-
 	$(document).ready(function(){
 		var email= "${one.email}";
 		
@@ -252,7 +251,9 @@
 
 		$("#email_id").val(emailid);
 		$("#email_url").val(emailurl);
-						
+		
+		
+		
 		if(emailurl=="naver.com"){
 			flag = 1;
 		}else if(emailurl=="daum.net"){
@@ -265,9 +266,8 @@
 
 		$('#mm').children('option').eq(flag).attr('selected', 'selected');
 	});
+</script>	
 	
-	
-</script>
 </head>
 <body>
 
@@ -283,14 +283,14 @@
 		<form class="join_form" method="POST" action="${path}/member/update">
 		<div class="container">
 			<div class="join_content">
-				<input type="hidden" name="email" id="email_url">
+				<!-- <input type="hidden" name="email" > -->
 				<div class="row_group">
 					<div class="join_row">
 						<h3 class="join_title">
 							<label for="id" >아이디</label>							
 						</h3>
 						<span class="ps_box int_id">
-							<input type="text" id="id" class="int"
+							<input type="text" name="id" id="id" class="int"
 							 maxlength="20" readonly="readonly" value="${one.id}">
 							<span class="step_url">@fiance.com</span>
 							
@@ -324,8 +324,8 @@
 					<div class="bir_wrap">						
 						<div class="bir_mm">
 							<span class="ps_box">
-								<input type="text" id="email_id" 
-								class="int" maxlength="20" name="email">							
+								<input type="text" name="email" id="email_id" 
+								class="int" maxlength="20" >							
 								
 							</span>
 						</div>
@@ -365,11 +365,11 @@
 					</div>
 					<div class="bir_wrap">
 						<div class="bir_add">										
-							<input type="text" name="zipcode" id="sample6_postcode" placeholder="우편번호" value="${one.zipcode }">
+							<input type="text" name="zipcode" id="sample6_postcode" placeholder="우편번호" value="${one.zipcode}">
 
 							<input type="button" class="shy_btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" name="addr1" id="sample6_address" placeholder="일반주소 입력" value="${one.addr1 }">
-							<input type="text" name="addr2" id="sample6_detailAddress" placeholder="상세주소 입력" value="${one.addr2 }">							
+							<input type="text" name="addr1" id="sample6_address" placeholder="일반주소 입력" value="${one.addr1}">
+							<input type="text" name="addr2" id="sample6_detailAddress" placeholder="상세주소 입력" value="${one.addr2}">							
 						</div>
 						
 										
