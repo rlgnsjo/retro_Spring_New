@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.retro.domain.member.MemberDTO;
 import com.retro.service.member.MemberService;
 
@@ -117,7 +115,7 @@ public class MemberController {
 		
 	}
 	@RequestMapping(value = "/pwupdate", method = RequestMethod.POST)
-	public String pwUpdatePlay(MemberDTO mDto) {
+ 	public String pwUpdatePlay(MemberDTO mDto) {
 		log.info(">>>>>>>>비밀번호 수정페이지 출력");
 			
 		service.pwUpdate(mDto);

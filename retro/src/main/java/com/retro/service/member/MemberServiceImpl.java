@@ -55,7 +55,7 @@ public class MemberServiceImpl implements MemberService{
 			session.setAttribute("userid", mDto.getId()); //session에 값을담아 view부분에 출력시킴.
 			session.setAttribute("name", name);
 			result = true;
-			log.info("session>" + session.getAttribute("name"));
+			log.info("session >" + session.getAttribute("name"));
 			
 		}
 		
@@ -70,7 +70,7 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
-	@Override
+	@Override 
 	public MemberDTO viewMember(HttpSession session) {
 	 String id = (String)session.getAttribute("userid");
 	 MemberDTO mDto = mDao.viewMember(id);
