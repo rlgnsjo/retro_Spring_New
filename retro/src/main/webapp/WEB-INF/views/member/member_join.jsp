@@ -408,7 +408,7 @@
 										<option value="gmail.com">@gmail.com(구글)</option>
 										<option value="nate.com">@nate.com(네이트)</option>											
 								</select>
-								<input type="hidden" id="email" name="email"> 	
+								<input type="hidden" id="email" name="email" > 	
 							</span>
 						</div>	
 
@@ -437,7 +437,7 @@
 							<input type="text"  name="zipcode" id="sample6_postcode" class="addrbtn" placeholder="우편번호"readonly="readonly" >
 							<input type="button" class="shy_btn" onclick="sample6_execDaumPostcode()" id="addr_btn" value="우편번호 찾기" ><br>
 							<input type="text" name="addr1" id="sample6_address" placeholder="일반주소 입력" class="addrbtn" readonly="readonly">
-							<input type="text"  name="addr2" id="sample6_detailAddress" placeholder="상세주소 입력">							
+							<input type="text" name="addr2" id="sample6_detailAddress" placeholder="상세주소 입력"readonly="readonly">							
 						</div>						
 										
 					</div>
