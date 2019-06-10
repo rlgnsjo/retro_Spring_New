@@ -272,10 +272,10 @@
 	<h3 class="qu_title">질문 게시판</h3>
 	<div>
 		<div id="order_board">
-			<span><a href="${path}/viewtable.retro?sort_type=new&search_option=${search_option}&keyword=${keyword}" id="orderNew">최신순</a></span>
-			<span><a href="${path}/viewtable.retro?sort_type=good&search_option=${search_option}&keyword=${keyword}" id="orderGood">추천순</a></span>
-			<span><a href="${path}/viewtable.retro?sort_type=reply&search_option=${search_option}&keyword=${keyword}" id="orderReply">댓글순</a></span>
-			<span><a href="${path}/viewtable.retro?sort_type=view&search_option=${search_option}&keyword=${keyword}" id="orderCnt">조회순</a></span>
+			<span><a href="${path}/board/list?curPage=${map.pager.curPage}&sort_option=new&search_option=${map.search_option}&keyword=${map.keyword}" id="orderNew">최신순</a></span>
+			<span><a href="${path}/board/list?curPage=${map.pager.curPage}&sort_option=good&search_option=${map.search_option}&keyword=${map.keyword}" id="orderGood">추천순</a></span>
+			<span><a href="${path}/board/list?curPage=${map.pager.curPage}&sort_option=reply&search_option=${map.search_option}&keyword=${map.keyword}" id="orderReply">댓글순</a></span>
+			<span><a href="${path}/board/list?curPage=${map.pager.curPage}&sort_option=view&search_option=${map.search_option}&keyword=${map.keyword}" id="orderCnt">조회순</a></span>
 		</div>						
 		<button class="btn btn-primary" id="boardAdd">게시글 등록</button>
 	</div>
@@ -291,7 +291,7 @@
 		        <th>첨부</th>
 		    </tr>
 	    </thead>
-	    <c:forEach items= "${list}" var="bDto">    <!-- jsp페이지에서 자바코드를 쉽게 작성하게 해주기 위한 jstl 태그 items가 액션에서 보낸 데이터 -->
+	    <c:forEach items= "${map.list}" var="bDto">    <!-- jsp페이지에서 자바코드를 쉽게 작성하게 해주기 위한 jstl 태그 items가 액션에서 보낸 데이터 -->
 	    	<!-- 현재 시간 구하기. -->                     <!--  이 값을 bDto에 담아준다.   -->
 	    	<jsp:useBean id="now" class="java.util.Date"/>  <!-- 현재라는 변수가 now라는 id에 담겨있음 -->
 	    	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today"/>
@@ -334,10 +334,10 @@
 		    </tr>
 	    </c:forEach>
 	    <tbody>
-		    <c:if test="${!empty keyword}">
+		    <c:if test="${!empty map.keyword}">
 				<div id= "search_result">
-					<span class="search_span">"${keyword}"</span>로 검색한 결과는 총
-					<span class="search_span">"${totalCount}"</span>건 입니다.
+					<span class="search_span">"${map.keyword}"</span>로 검색한 결과는 총
+					<span class="search_span">"${map.count}"</span>건 입니다.
 				</div>		
 			</c:if>			 
 	    </tbody>
@@ -346,12 +346,12 @@
 	<div class="pagination_box">
 		<div class="pagination" id="pani">
 						
-		<c:if test="${pageMaker.prev}"> <!--prev값에는 false 값이 담겨있음. test안에는 조건문이 들어가있음.   --> 
+		<c:if test="${map.pager.curBlock > 1}">  
 		  <li>
-		 	<a href="${path}/viewtable.retro?page=${pageMaker.startPage -1}&sort_type=${sort_type}&search_option=${search_option}&keyword=${keyword}">&laquo;</a>		 	
+		 	<a href="${path}/board/list?curPage=${map.pager.blockBegin-10}&sort_option=${map.sort_type}&search_option=${map.search_option}&keyword=${map.keyword}">&laquo;</a>		 	
 		 </li>
 		 <li>
-		 	<a href="${path}/viewtable.retro?page=1&sort_type=${sort_type}">1</a>		 	
+		 	<a href="${path}/board/list?curPage=1&sort_option=${map.sort_type}&sort_option=${map.sort_type}&search_option=${map.search_option}&keyword=${map.keyword}">1</a>		 	
 		 </li>	
 		 <li>
 		 	<a>...</a>
@@ -360,11 +360,11 @@
 		
 		
 		
-		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">  
+		<c:forEach begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}" var="idx">  
 			   	
 		<li>
-		 <%--  <a href="#"></a>   --%>		  			     
-		  <a href="${path}/viewtable.retro?page=${idx}&sort_type=${sort_type}&search_option=${search_option}&keyword=${keyword}&key=${code}" <c:out value="${pageMaker.criDto.page == idx ? 'class=active':''}" />>${idx}</a>	 
+			  			     
+		  <a href="${path}/board/list?curPage=${idx}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}&key=${code}" <c:out value="${map.pager.curPage == idx ? 'class=active':''}" />>${idx}</a>	 
 		 	  
 		 </li> 
 		 </c:forEach> 
@@ -372,25 +372,25 @@
 		 
 		 
 		 
-		 <c:if test="${pageMaker.next}">  <!-- 1~10페이지에서  >>버튼을 클릭하면 11로 이동 무조건 endpage에서는 1로 이동 -->
+		 <c:if test="${map.pager.curBlock < map.pager.totBlock}">  <!-- 1~10페이지에서  >>버튼을 클릭하면 11로 이동 무조건 endpage에서는 1로 이동 -->
 		 <li>
 		 	<a>...</a>
 		 </li>
 		  <li>
-		 	<a href="${path}/viewtable.retro?page=${pageMaker.finalPage}&sort_type=${sort_type}&search_option=${search_option}&keyword=${keyword}">${pageMaker.finalPage}</a>		 	
+		 	<a href="${path}/board/list?curPage=${map.pager.totPage}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map.keyword}">${map.pager.totpage}</a>		 	
 		 </li>
 		 <li>
-		 	<a href="${path}/viewtable.retro?page=${pageMaker.endPage+ 1}&sort_type=${sort_type}&search_option=${search_option}&keyword=${keyword}">&raquo;</a>		 	
+		 	<a href="${path}/board/list?curPage=${map.pager.blockEnd+1}&sort_option=${map.sort_option}&search_option=${map.search_option}&keyword=${map. keyword}">&raquo;</a>		 	
 		 </li>		 
 		 </c:if>
 		</div>
 	</div>
 	<div id="div_search">
 		<select id="selsearch" name="selsearch">
-			<option value="1"selected="selected">제목+내용</option>
-			<option value="2">내용</option>
-			<option value="3">제목</option>
-			<option value="4">작성자</option>
+			<option value="all"selected="selected">제목+내용</option>
+			<option value="title">내용</option>
+			<option value="content">제목</option>
+			<option value="writer">작성자</option>
 		</select>
 		<input type="text" placeholder="검색할 값을 입력하세요." id="search_board" name="search_board">
 		<a href="#" id="search_btn" class="btn btn_search">검색</a>
@@ -405,7 +405,7 @@
 	
 	
 	$(document).ready(function() {						
-	 var sort_type = "${sort_type}"; 
+	 var sort_type = "${map.sort_option}"; 
 	 
 		if(sort_type == "new"){
 			$("#order_board span a").eq(0).css("color", "#FF69B4").css("font-weigt", "bold").css("text-decoration","underline");
@@ -427,7 +427,7 @@
 			 $('#search_board').css('border', '1px solid rgb(231,29,54)');
 			 return false;
 		}
-		location.href= "${path}/viewtable.retro?search_option="+search_option+"&keyword="+keyword;				
+		location.href= "${path}/board/list?search_option="+search_option+"&keyword="+keyword;				
 	});
 	function bno_val(bno) {
 		location.href= "${path}/replyboard.retro?bno=" + bno;

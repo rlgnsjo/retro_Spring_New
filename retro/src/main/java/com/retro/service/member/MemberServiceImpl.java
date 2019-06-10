@@ -125,7 +125,7 @@ public class MemberServiceImpl implements MemberService{
 		int result = mDao.delete(id);
 		
 		if (result > 0) {
-			session.invalidate();
+			session.invalidate();  // 세션값 무효화
 		}
 	}
 
