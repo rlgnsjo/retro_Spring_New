@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import com.retro.domain.board.BoardDTO;
 
 public interface BoardService {
-	
 	public void create(BoardDTO bDto); // 게시글 등록
 	public void update(BoardDTO bDto); // 게시글 수정
 	public void delete(int bno); // 게시글 삭제

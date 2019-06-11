@@ -34,7 +34,12 @@
 		) A
 	) WHERE rnum BETWEEN #{start} AND #{end}
 	</sql> 
-	
+	<!-- 레코드 갯수 계산 -->
+	<select id="countArticle" resultType="int">
+		SELECT COUNT(*)
+		FROM tbl_board b, tbl_member m
+		<include refid="search"/>	<!-- id가 search인 sql문에 입력 -->
+	</select>	
 	<sql id="search">
 		<choose>
 			<when test="search_option != 'all'">
@@ -60,10 +65,15 @@
 		</choose>
 	</sql>
 	
-	<!-- 레코드 갯수 계산 -->
-	<select id="countArticle" resultType="int">
-		SELECT COUNT(*)
-		FROM tbl_board b, tbl_member m
-		<include refid="search"/>	
-	</select>	
+	<select id="read" resultType="com.retro.domain.board.BoardDTO">
+	 SELECT * FROM tbl_board
+	 WHERE bno = #{bno}		
+	</select>
+	
+	<update id="increaseViewCnt">
+		Update tbl_board
+			SET viewcnt = viewcnt +1
+		WHERE bno = #{bno}		
+	</update>
+	
    </mapper> 

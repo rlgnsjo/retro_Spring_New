@@ -49,6 +49,7 @@
 							 elPlaceHolder: "replyInsert",
 							 sSkinURI: "<%= request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",
 							 fCreator: "createSEditor2"
+							 htParams: {fOnBeforeUnload : function(){}}
 							});
 							</script>
 														

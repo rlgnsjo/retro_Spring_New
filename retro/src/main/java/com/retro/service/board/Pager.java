@@ -21,23 +21,23 @@ public class Pager {
 	public Pager(int count, int curPage) {
 		curBlock = 1; // 현재 블록번호
 		this.curPage = curPage; // 현재 페이지 번호
-		setTotPage(count); // 전체 페이지 갯수 계산
+		setTotPage(count); // 전체 페이지 갯수 
 		setPageRange(); // #{start}, #{end} 값 계산
 		setTotBlock(); // 전체 블록 갯수 계산
 		setBlockRange(); // 블록의 시작, 끝 번호 계산
 	}
 	public void setBlockRange() {
 		// 원하는 페이지가 몇번째 블록에 속하는지 계산
-		curBlock= (curPage-1)/BLOCK_SCALE +1;
+		curBlock= (curPage-1)/BLOCK_SCALE +1;  // 1
 		// 블록의 시작페이지,끝페이지 번호 계산
-		blockBegin=(curBlock-1)*BLOCK_SCALE +1;
-		blockEnd=blockBegin + BLOCK_SCALE -1;
+		blockBegin=(curBlock-1)*BLOCK_SCALE +1; //1
+		blockEnd=blockBegin + BLOCK_SCALE -1; // 10
 		// 마지막 블록 번호가 범위를 초과 하지 않도록 처리
 		if (blockEnd > totPage) {
 			blockEnd = totPage;
 		}
 		// [이전] [다음] 을 눌렀을때 이동할 페이지 번호
-		prevPage=(curBlock==1) ? 1 : (curBlock-1)*BLOCK_SCALE;
+		prevPage=(curBlock==1) ? 1 : (curBlock-1)*BLOCK_SCALE; //prevPage는 1
 		nextPage=curBlock>totBlock ? (curBlock*BLOCK_SCALE)
 				:(curBlock*BLOCK_SCALE)+1;
 		// 마지막 페이지가 범위를 초과하지 않도록 처리
@@ -47,7 +47,8 @@ public class Pager {
 	}
 	// 블록의 갯수 계산
 	public void setTotBlock() {
-		totBlock = (int)Math.ceil(totPage*1.0 / BLOCK_SCALE);
+		//Math.ceil 반올림값 / = 나누기
+		totBlock = (int)Math.ceil(totPage*1.0 / BLOCK_SCALE);  // 1
 	}
 	
 	// where rn between #{start} and #{end} 에 입력될값
@@ -55,7 +56,7 @@ public class Pager {
 	// 시작번호 =(현재페이지-1) x 페이지당 게시물수 +1
 	// 끝번호 = 시작번호 + 페이지당 게시물수 -1
 		pageBegin = (curPage-1) * PAGE_SCALE + 1;
-		pageEnd = pageBegin  + PAGE_SCALE -1;
+		pageEnd = pageBegin  + PAGE_SCALE -1; // 1 - 10 -  1 = 10
 	}
 	public int getCurPage() {
 		return curPage;
@@ -80,7 +81,7 @@ public class Pager {
 	}
 	// 전체 페이지 갯수 계산
 	public void setTotPage(int count) {
-		// Math.ceil() 올림.
+		// Math.ceil() 올림. 카운드 1.8에 totpage를 반올림하니 2
 		totPage = (int)Math.ceil(count*1.0 / PAGE_SCALE);
 	}
 	public int getTotBlock() {

@@ -346,7 +346,7 @@
 	<div class="pagination_box">
 		<div class="pagination" id="pani">
 						
-		<c:if test="${map.pager.curBlock > 1}">  
+		<c:if test="${map.pager.curBlock > 1}"> 
 		  <li>
 		 	<a href="${path}/board/list?curPage=${map.pager.blockBegin-10}&sort_option=${map.sort_type}&search_option=${map.search_option}&keyword=${map.keyword}">&laquo;</a>		 	
 		 </li>
@@ -372,7 +372,7 @@
 		 
 		 
 		 
-		 <c:if test="${map.pager.curBlock < map.pager.totBlock}">  <!-- 1~10페이지에서  >>버튼을 클릭하면 11로 이동 무조건 endpage에서는 1로 이동 -->
+		 <c:if test="${map.pager.curBlock < map.pager.totBlock}"> <!-- 1~10페이지에서  >>버튼을 클릭하면 11로 이동 무조건 endpage에서는 1로 이동 -->
 		 <li>
 		 	<a>...</a>
 		 </li>
@@ -430,7 +430,7 @@
 		location.href= "${path}/board/list?search_option="+search_option+"&keyword="+keyword;				
 	});
 	function bno_val(bno) {
-		location.href= "${path}/replyboard.retro?bno=" + bno;
+		location.href= "${path}/board/view?bno=" + bno;
 	} 
 	$("#boardAdd").on("click", function(){
         $.ajax({

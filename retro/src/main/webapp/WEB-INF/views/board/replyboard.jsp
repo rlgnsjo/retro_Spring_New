@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"  %>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"  %>
+
+<c:set var="path" value= "${pageContext.request.contextPath}"/>
    <%
    		String referer = request.getHeader("referer");
    %>
@@ -7,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/section.css?v=1">
+<link rel="stylesheet" href="${path}/resources/css/section.css?v=1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <title>Insert title here</title>
 
@@ -573,9 +576,8 @@ $(document).on("click", "#reply_btn", function(){
 
 function comment_list(){        // 댓글을 페이지전환없이 사용해주기 위해 사용.
 	$.ajax({
-		type: "post",
-		url: "commentlist.retro",
-		data: "bno=${one.bno}",  			// 게시글번호를 데이터로 보내주고 있음. 해당게시글을 보여주기 위해 사용.
+		type: "get",
+		url: "${path}/reply/list?bno=${one.bno}",// 게시글번호를 데이터로 보내주고 있음. 해당게시글을 보여주기 위해 사용.		  			
 		success: function(result) {           //7. commlistaction의 url을 해당경로로 담아줌  
 			$("#commentList").html(result);  //8.id 가 commentList인 코드를 commenlist jsp 값을 뿌려줌
 		}  
@@ -618,7 +620,7 @@ function comment_list(){        // 댓글을 페이지전환없이 사용해주�
 </script>
 <body>
 <%@  include file="../include/header.jsp"%>
-<script type="text/javascript" src="${path}/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="${path}/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <div id="board_wrap">
 		<div class="box box-primary">
 			<div class="box-header">
@@ -678,8 +680,6 @@ function comment_list(){        // 댓글을 페이지전환없이 사용해주�
 					<tr>
 						<td id="detailContent" colspan="4" style="border-left: 0px; border-right: 0px; padding: 100px;">
 							<p>${one.content}</p>
-							<!-- <textarea class="form-control" id="content" name="content" rows="3"
-								cols="" readonly="readonly"></textarea> -->
 							</td>
 						</tr>
 					</table>
@@ -687,7 +687,11 @@ function comment_list(){        // 댓글을 페이지전환없이 사용해주�
 
 				<div id="user_btn">
 					<button type="button" id="returnGo" class="reply_btn">게시판 목록</button>
-				<c:if test="${sessionScope.loginUser.id == one.writer}"> 
+				
+					<c:if test="${empty !sessionScope.userid}">				
+					 <button class="reply_btn" id="answer_btn">답글</button>
+					 </c:if> 
+					 <c:if test="${sessionScope.userid == one.writer}">
 					<button class="reply_btn" id="remove_btn">삭제</button>
 					<button class="reply_btn" id="update_btn">수정</button>
 			  </c:if> 

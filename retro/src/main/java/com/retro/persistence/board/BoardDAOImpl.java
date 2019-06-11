@@ -39,7 +39,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public BoardDTO read(int bno) {
 		
-		return null;
+		return sqlSession.selectOne("board.read", bno);	
 	}
 
 	@Override
@@ -56,18 +56,21 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void increaseViewCnt(int bno, HttpSession session) {
+	public void increaseViewCnt(int bno) {
 		
-		
+		sqlSession.update("board.increaseViewCnt", bno);
 	}
 
 	@Override
-	public int countArticle(String search_option, String keyword) {
-		Map<String, String> map = new HashMap<>();
-		map.put("search_option", search_option);
-		map.put("keyword", "%"+keyword+"%");
+	public int countArticle(String search_option, String keyword) { // all ""
+		Map<String, String> map = new HashMap<>(); // key value 한쌍으로감. DTO list도 담아서 보낼수 있음. 
+		//Map<String, String> map = new HashMap<>(); =  다형성은 상속이나 구현받은 클래스만 사용가능 
+		// 다형성을 사용할 경우 하나의 타입으로 여러가지 타입으로 사용이 가능.
+	
+		map.put("search_option", search_option);  
+		map.put("keyword", "%"+keyword+"%"); //"%"+keyword+"%" = "%%"
 		
-		return sqlSession.selectOne("board.countArticle", map);
+		return sqlSession.selectOne("board.countArticle", map); // 쿼리문의 한줄만 조회. 단건하나이니 resulttype = int
 	}
 
 }
