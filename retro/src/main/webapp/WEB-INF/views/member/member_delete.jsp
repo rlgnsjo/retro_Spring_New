@@ -500,11 +500,6 @@ input, select {
 			
 			
 			
-			
-			
-			
-			
-			
 			$('.modal_btn').eq(0).click(function(){
 				$('.modal').css('display', 'none');
 				

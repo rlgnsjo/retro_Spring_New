@@ -26,7 +26,7 @@
 						<div class="repl_box">
 							<div class="repl_user">${replyview.writer}</div> <!--6.view.jsp에서 ajax로 호출해줬으니 해당 ajax로 이동  -->
 							
-							<c:if test="${sessionScope.loginUser.id == replyview.writer}">  <!--2번 해당버튼을 클릭했을때 이벤트 시작  -->
+							<c:if test="${sessionScope.userid == replyview.writer}">  <!--2번 해당버튼을 클릭했을때 이벤트 시작  -->
 								<a class="reply_del" data_num="${replyview.rno}">삭제</a>   <!-- data_num : 게시글 삭제시 해당id를 rno변수로 찾아준다. -->
 							</c:if>					 
 							
@@ -37,10 +37,10 @@
 						</div>
 						
 						</c:forEach>
-						<form action="replyAdd.retro" method="POST" name="frm_reply" id="frm_reply">
+						<form action="${path}/reply/create" method="POST" name="frm_reply" id="frm_reply">
 						<div class="input_box">
 							<span id="input_header"><span id="input_text">작성자:</span>${replyview.writer}</span>
-							<textarea type="comment-desc" name="re_textarea" id="replyInsert" placeholder="댓글입력창"></textarea>
+							<textarea type="comment-desc" name="content" id="replyInsert" placeholder="댓글입력창"></textarea>
 							
 							<script type="text/javascript">
 							var oEditors = [];
@@ -64,7 +64,7 @@
 					</div>	
 					
 					<c:choose>
-					 <c:when test="${empty sessionScope.loginUser }"> <!--   c:when test안에 값은 jstl 태그의 조건식값. sessionScope에 접근해서
+					 <c:when test="${empty sessionScope.userid}"> <!--   c:when test안에 값은 jstl 태그의 조건식값. sessionScope에 접근해서
 					  loginuser가 비어 있으면 밑에 있는 코드가 실행된다는걸 의미 하는거 같음 .-->
 					 
 					 	<div class="reply_login" id="reply_nologin">
@@ -74,8 +74,8 @@
 					 </c:when>					
 				</c:choose>
 				<span class="error">내용을 입력해주세요.</span>
-				<input type="hidden" id="re_writer" name="re_writer" value="${sessionScope.loginUser.id }"> <!-- 세션안에 있는 login user에 id값을 담아라. -->
-				<input type="hidden" id="re_bno" name="re_bno">		<!--reply AddAction변수에 담아서 사용.-->
+				<input type="hidden" id="re_writer" name="writer" value="${sessionScope.userid }"> <!-- 세션안에 있는 login user에 id값을 담아라. -->
+				<input type="hidden" id="re_bno" name="bno">		<!--reply AddAction변수에 담아서 사용.-->
 				 										 
 				</form>							
 			</div>

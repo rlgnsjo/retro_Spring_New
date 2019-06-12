@@ -242,7 +242,6 @@
 					
 					});
 					$('#modal_open').click(function(){
-						alert("system error");
 						$('#modal').css('display', 'flex');
 						$('#login_id').focus();
 					});

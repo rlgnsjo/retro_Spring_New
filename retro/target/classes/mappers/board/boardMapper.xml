@@ -76,4 +76,17 @@
 		WHERE bno = #{bno}		
 	</update>
 	
+	<!-- 해당 게시글 리플 +1 -1 -->
+	
+	<update id="updateReplyCnt" parameterType="HashMap">
+		Update tbl_board SET
+		<if test="flag == 'plus'">
+		replycnt = replycnt +1		
+		</if>
+		<if test="flag == 'minus'">
+		replycnt = replycnt - 1		
+		</if>	
+		WHERE bno = #{bno}
+	</update>
+	
    </mapper> 

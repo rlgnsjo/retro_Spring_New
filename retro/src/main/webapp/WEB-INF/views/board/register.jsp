@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <%@  include file="../include/header.jsp"%>
-<c:if test="${sessionScope.loginUser == null}">
+<c:if test="${sessionScope.user == null}">
 	<script>
 		alert("로그인 하신 후 사용하세요.");
 		location.href="${path}/viewtable.retro?message=nologin";
@@ -130,10 +130,6 @@
 	.reply_login {
 		border-top: 1px solid black;
 		padding-left: 10px;
-	}
-	
-	#reply_nologin {
-		
 	}
 	
 	.reply_nologin_span {

@@ -24,12 +24,14 @@ public class ReplyDAOImpl implements ReplyDAO {
 	@Override
 	public void create(ReplyDTO rDto) {
 		
-		
+		sqlSession.insert("reply.create", rDto);
 	}
 
 	@Override
-	public void delete(ReplyDTO rDto) {
-		
+	public void delete(int rno) {
+		sqlSession.delete("reply.delete", rno);
 		
 	}
+
+	
 }

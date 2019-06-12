@@ -513,8 +513,6 @@
 			color: white;
 			outline: none;
 			border: 0px;
-			/* margin-top:  10px; */
-			/* margin-left: 200px;  */
 			cursor: pointer;
 			text-align: center;
 		}
@@ -559,8 +557,7 @@ $(document).on("click", "#reply_btn", function(){
 		
 		$.ajax({
 			type: "post",
-			url: "replyAdd.retro",
-			dataType: "json",
+			url: "${path}/reply/create",
 			data: $("#frm_reply").serialize(),  //serialize() 데이터가 많으니 바이트코드로 변환하는 과정을 해줌! (직렬화)
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // 직렬화를 과정을 거치니 코드의 규격을 다시정해주는것
 			success: function(data) {
@@ -590,7 +587,7 @@ function comment_list(){        // 댓글을 페이지전환없이 사용해주�
 				
 		$.ajax({
 			type: "post",
-			url: "replyRemove.retro",
+			url: "${path}/reply/delete",
 			data: "rno=" + rno + "&bno=" + bno, 			
 			success: function(result) {             
 				comment_list();

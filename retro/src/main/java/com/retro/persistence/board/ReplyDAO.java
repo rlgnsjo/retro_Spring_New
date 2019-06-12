@@ -7,6 +7,6 @@ import com.retro.domain.board.ReplyDTO;
 public interface ReplyDAO {
 	public List<ReplyDTO> list(int bno);
 	public void create(ReplyDTO rDto);
-	public void delete(ReplyDTO rDto);
+	public void delete(int rno);
 	
 }

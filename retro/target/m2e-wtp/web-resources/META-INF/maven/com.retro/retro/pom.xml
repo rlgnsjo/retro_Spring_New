@@ -20,6 +20,13 @@
 		</repository>
 	</repositories>
 	<dependencies>
+	            <!-- aop관련 라이브러리 -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>	
+		</dependency>
+	
 			
 	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok 추가  -->
 		<dependency>

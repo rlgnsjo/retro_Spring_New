@@ -28,7 +28,6 @@
 		padding-top: 1000px;
 		padding: 20px;
 		box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 4px 8px 0  #FFE3EE; 
-		/* box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19); */
 	}
 	/* 질문게시판부분 */
 	#order_board {
@@ -261,10 +260,7 @@
 		.pagination a:hover:not(.active) {background-color: #ddd;}
 				
 
-	</style>
-	
-
-	
+	</style>	
 </head>
 <body>
 	<%@  include file="../include/header.jsp"%>
