@@ -299,8 +299,7 @@
 						    <label for="cbox">
 								이용약관, 개인정보 수집 및 이용 <br>
 								위치정보 이용약관(선택),프로모션안내<br>
-								메일 수신(선택)에 모두 동의합니다.
-								
+								메일 수신(선택)에 모두 동의합니다.								
 							</label>
 
 						</span>
@@ -400,7 +399,7 @@
 					</ul>
 				</div>
 				<div class="btn_double_area">
-					<span> <a href="#" class="btn_type btn_default">비동의</a></span>
+					<span> <a href="${path}/" class="btn_type btn_default">비동의</a></span>
 					<span> <a href="#" class="btn_type btn_agree">동의</a></span>
 				</div>
 			</form>
@@ -423,7 +422,7 @@
 
 				<div class="address">
 					<span>
-						<a href="https://www.naver.com/">
+						<a href="">
 							<img class="addr_logo" alt="피앙새 로고" src="img/naver_logo.png">
 						</a>
 					</span>

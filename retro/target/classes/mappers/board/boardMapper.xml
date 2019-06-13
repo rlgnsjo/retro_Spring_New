@@ -88,5 +88,9 @@
 		</if>	
 		WHERE bno = #{bno}
 	</update>
+	<insert id="create" parameterType="com.retro.domain.board.BoardDTO">	
+		 INSERT INTO tbl_board(bno,title,content,writer)
+ 		 VALUES (SEQ_BOARD.nextval,#{title},#{content},#{writer})		
+	</insert>
 	
    </mapper> 

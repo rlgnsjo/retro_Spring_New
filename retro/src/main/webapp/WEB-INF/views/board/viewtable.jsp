@@ -428,22 +428,9 @@
 	function bno_val(bno) {
 		location.href= "${path}/board/view?bno=" + bno;
 	} 
-	$("#boardAdd").on("click", function(){
-        $.ajax({
-               type: "post",
-               dataType: "json",
-               url: "registerAjax.retro",                     
-               success: function(data) {          
-                      if(data.message == "login") {
-                            location.href= "registerView.retro"
-                      } else {
-                            $('#modal').css('display', 'flex');
-                            $('.err_msg').text('로그인이 필요한 시스템입니다.')
-                                                 .css('display', 'block');                                 
-                      }
-               } 
-        });
-  })
+	$("#boardAdd").on("click", function(){ 
+	 	 location.href= "${path}/board/create";   //${path} context-root 해당 프로젝트명으로 이동한다.                 
+  });
 	
 	
 	

@@ -19,8 +19,8 @@ public class BoardDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;  //SqlSession은 데이터타입명으로써 session은 변수명이다.
 	
 	@Override
-	public void create(BoardDTO bDto) {
-		
+	public int create(BoardDTO bDto) {
+		return sqlSession.insert("board.create", bDto);
 		
 	}
 

@@ -372,8 +372,6 @@
 			box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0  #FFE3EE; 
 		}
 		
-
-
 		.chat {		
 			margin: 0 auto;
 			margin-left: 8px;
@@ -455,7 +453,6 @@
 			border-radius: 8px;
 			margin: 10px auto 40px;
 			padding: 20px;
-			/* border-top: 25px solid #FADAE5 !important;	 */
 			box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.01);
 			
 		}
@@ -608,7 +605,7 @@ function comment_list(){        // 댓글을 페이지전환없이 사용해주�
 	});
 	
 	$(document).on("click", "#update_btn", function(){
-		location.href="boardUpdate.retro?bno=${one.bno}";
+		location.href="${path}/board/update?bno=${one.bno}";
 			
 	});
 	

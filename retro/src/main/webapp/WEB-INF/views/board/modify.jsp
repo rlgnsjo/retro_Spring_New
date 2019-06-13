@@ -2,15 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <%@  include file="../include/header.jsp"%>
-<c:if test="${sessionScope.user == null}">
-		<script>
-	alert("로그인 하신후 사용하세요.");
-	location.href="${path}/viewtable.retro?message=nologin";
-</script>
-</c:if>
-    
-    
-    
+           
 <!DOCTYPE html>
 <html>
 <head>
@@ -221,50 +213,50 @@
 		margin-left: 8px;
 	}
 	 .modal{
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-        }
-          
-        .modal-content {
-            background-color: #fefefe;           
-            margin: 15% auto; 
-            padding: 20px;
-            border: 1px solid #FFD8D8;
-            border-radius: 35px;
-            width: 30%;                           
-      }
-      .modal-content p {
-      	text-align: center;
-      	line-height: 1.5;
-      	font-size: 14pt;
+	           display: none; 
+	           position: fixed; 
+	           z-index: 1; 
+	           left: 0;
+	           top: 0;
+	           width: 100%; 
+	           height: 100%; 
+	           overflow: auto; 
+	           background-color: rgb(0,0,0); 
+	           background-color: rgba(0,0,0,0.4); 
+	       }
+	         
+     .modal-content {
+         background-color: #fefefe;           
+         margin: 15% auto; 
+         padding: 20px;
+         border: 1px solid #FFD8D8;
+         border-radius: 35px;
+         width: 30%;                           
+     }
+     .modal-content p {
+     	text-align: center;
+     	line-height: 1.5;
+     	font-size: 14pt;
 
-      }
-      .modal-content span {
-		    font-size: 24pt;
-      }
-      #modal_btn{     	      	
-      	text-align: center;
-      	padding-bottom: 10px;
-      	padding-top: 10px;
-      }
-      .btn_type{
-      width: 150px;	
-      height: 50px;
-	  background-color: #FFD8D8;			
-	  border:0px;
-	  color: white;
-	  border-radius: 8px;
-	  margin: 11px;
-	  cursor:pointer;
-	 }
+     }
+     .modal-content span {
+	    font-size: 24pt;
+     }
+     #modal_btn{     	      	
+     	text-align: center;
+     	padding-bottom: 10px;
+     	padding-top: 10px;
+     }
+	 .btn_type{
+		 width: 150px;	
+		 height: 50px;
+		 background-color: #FFD8D8;			
+		 border:0px;
+		 color: white;
+		 border-radius: 8px;
+		 margin: 11px;
+		 cursor:pointer;
+	}
 	 .file_list_filesize {
 		color: #363636;
 	}
@@ -390,7 +382,7 @@
 			</div>
 			<!-- form속성에 action을 지정하지 않으면 현재 경로를 그대로 action의 대상 경로로 설정 -->
 			<!-- form태그 안의 값은 input, textarea, select, check, 값만 가져올수있음.  -->
-			<form id="frm_bin" name="frm_bin" action="modifyPlay.retro" method="post" enctype="multipart/form-data">
+			<form id="frm_bin" name="frm_bin" action="${path}/board/update" method="post">
 
 			<div class="box-body">
 				<div class="form-group">
@@ -414,7 +406,7 @@
 				</div>
 				<div class="forn-group">
 					<label for="writer">작성자</label>
-					<input value="${one.writer}" type="text" id="writer" name="writer" class="form-control"value="${sessionScope.loginUser.id}"  readonly="readonly">
+					<input value="${one.writer}" type="text" id="writer" name="writer" class="form-control"value="${sessionScope.userid}"  readonly="readonly">
 					<input type="button" class="btn btn-file" value="현재 첨부파일"> 
 					<c:choose>
 						<c:when test="${one.filesize > 0}">

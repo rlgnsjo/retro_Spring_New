@@ -81,4 +81,29 @@ public class BoardController {
 		return "board/replyboard";  // 반환활 jsp 주소값
 	}
 	
+	// 게시글 등록 페이지 출력
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String createView() {
+		log.info("게시글 등록 페이지 출력");
+		
+		return "board/register";
+	}
+	
+	
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public String createPlay(BoardDTO bDto) {
+		log.info("게시글 등록 페이지 출력! 실제입력!");
+		service.create(bDto);
+		
+		
+		return "redirect:/board/list"; 
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String updateView() {
+		
+				
+		return "board/modify"; 
+	}
+	
 }

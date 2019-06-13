@@ -1,20 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"  %>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <%@  include file="../include/header.jsp"%>
-<c:if test="${sessionScope.user == null}">
-	<script>
-		alert("로그인 하신 후 사용하세요.");
-		location.href="${path}/viewtable.retro?message=nologin";
-	</script>
-</c:if>
-<%-- <c:if test="${sessionScope.loginUser == null}">
-		<script>
-	alert("로그인 하신후 사용하세요.");
-	 location.href='${path}/loginPage.retro';
-</script>
-</c:if> --%>
-    
+
     
     
 <!DOCTYPE html>
@@ -220,6 +209,7 @@
 	#close_file_btn:hover {
 		font-size: 25px;
 	}	
+	
 </style>
 </head>
 
@@ -288,7 +278,7 @@
 	});
 	
 </script>
-<script type="text/javascript" src="${path}/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="${path}/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <body>
 <div id="board_wrap">
 		<div class="box box-primary">
@@ -296,7 +286,7 @@
 				<h3 class="box-title">게시글 등록</h3>
 			</div>
 			<!-- form속성에 action을 지정하지 않으면 현재 경로를 그대로 action의 대상 경로로 설정 -->
-			<form id="frm_bin" name="frm_bin" action="registerPlay.retro" method="post" enctype="multipart/form-data">
+			<form id="frm_bin" name="frm_bin" action="${path}/board/create" method="post" >
 
 			<div class="box-body">
 				<div class="form-group">
@@ -308,18 +298,19 @@
 					<label for="content">내용</label>
 					<textarea class="form-control" id="content" name="content" rows="10" cols="100"></textarea>
 					<script type="text/javascript">
-						var oEditors = [];
-						nhn.husky.EZCreator.createInIFrame({
-						 oAppRef: oEditors,
-						 elPlaceHolder: "content",
-						 sSkinURI: "<%= request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",
-						 fCreator: "createSEditor2"
-						});
-					</script>
+							var oEditors = [];
+							nhn.husky.EZCreator.createInIFrame({
+							 oAppRef: oEditors,
+							 elPlaceHolder: "replyInsert",
+							 sSkinURI: "${path}/resources/smarteditor/SmartEditor2Skin.html",
+							 fCreator: "createSEditor2",
+							 htParams: {fOnBeforeUnload : function(){}}
+							});
+							</script>
 				</div>
 				<div class="forn-group">
 					
-					<label for="writer">작성자</label> <input type="text" id="writer" name="writer" class="form-control" value="${sessionScope.loginUser.id}" readonly="readonly">
+					<label for="writer">작성자</label> <input type="text" id="writer" name="writer" class="form-control" value="${sessionScope.userid}" readonly="readonly">
 				</div>
 				<div id="file_wrap">
 					<input type="file" name="uploadfile" id="uploadfile" style="display: none;">

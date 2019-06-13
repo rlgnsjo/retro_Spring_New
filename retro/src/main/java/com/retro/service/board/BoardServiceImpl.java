@@ -18,8 +18,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	@Override
-	public void create(BoardDTO bDto) {
-		
+	public int create(BoardDTO bDto) {
+		return bDao.create(bDto);
 		
 	}
 

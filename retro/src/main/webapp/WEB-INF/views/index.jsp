@@ -12,7 +12,6 @@
 <body>
 	<%@  include file="include/header.jsp"%>
 	<section>
-
 		<div class="gallery">
 			<ul>
 				<li>
@@ -23,51 +22,33 @@
 			</ul>
 			<div class="desc">
 				<!-- <a href="#"> -->
-				<h2>BEST CHANEL LOOK</h2></a>
-						
+				<h2>BEST CHANEL LOOK</h2></a>						
 			<!-- 	<p id="gucci">EXO KAI is best guc</p> -->
-
 			</div>
 		</div>
-
 		<div class="gallery">
 			<ul>
 				<c:forEach items="${pLists.nList}" var="sin">
 					<a href="#"><img src="resources/images/${sin.p_img}" target="_blank "></a>
 					</c:forEach>
 			</ul>
-
 			<div class="desc">
 				<h2>BEST GUCCI LOOK</h2>
 <!-- 				<p id="gucci">EXO KAI is best gucci dreessr</p> -->
-
 			</div>
-		</div>
-		
+		</div>		
 		<div class="gallery">
 			<ul>
 			<c:forEach items="${pLists.vList}" var="cnt">
 						<a href="#"><img src="resources/images/${cnt.p_img}" target="_blank"></a>
-					</c:forEach>
-			
+					</c:forEach>			
 			</ul>
 			<div class="desc">
 				<h2>BEST K-POP STAR LOOK</h2>
 	<!-- 			<p id="gucci">EXO KAI is best guc</p> -->
-			</div>
-	
+			</div>	
 		</div>
-
-
-
 	</section>
-	<script type="text/javascript">
-	
-	
-	</script>
-
-
 	<%@ include file="include/footer.jsp"%>
-
 </body>
 </html>

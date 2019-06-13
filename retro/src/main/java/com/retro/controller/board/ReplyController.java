@@ -31,17 +31,16 @@ public class ReplyController {
 		List<ReplyDTO> list = service.list(bno);
 		model.addAttribute("replyList", list);
 		
-		return "/board/commentlist";
-		
+		return "/board/commentlist";		
 	}
+	
 	@ResponseBody
 	@RequestMapping(value = "create", method = RequestMethod.POST) 
 	public void create(ReplyDTO rDto){
 		
 	log.info(">>>>>댓글 등록");
 	log.info(">>>>>>" + rDto.toString());
-	     service.create(rDto);
-	
+	     service.create(rDto);	
 	}	
 	
 	
