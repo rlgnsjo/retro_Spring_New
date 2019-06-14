@@ -38,10 +38,11 @@
   		SET pw = #{pw}
   		WHERE id = #{id}
   </update>	 
-		<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="String">
      	 DELETE FROM tbl_member
      	 WHERE id= #{id}    	    
      </delete>
+  	 
   	 
   	 
   	 

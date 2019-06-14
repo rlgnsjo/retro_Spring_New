@@ -25,14 +25,15 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void update(BoardDTO bDto) {
-		
+		//DB 가서 데이터 수정함.
+		 bDao.update(bDto);
 		
 	}
 
 	@Override
 	public void delete(int bno) {
-		
-		
+		 bDao.delete(bno);
+				
 	} 
 
 	@Override
@@ -60,7 +61,7 @@ public class BoardServiceImpl implements BoardService {
 			// 조회수 증가 처리
 			bDao.increaseViewCnt(bno);
 			// 조회수를 올릴시간 저장 
-			session.setAttribute("update_time_"+bno, current_time);
+			session.setAttribute("update_time_" + bno, current_time);
 		}
 		
 	}

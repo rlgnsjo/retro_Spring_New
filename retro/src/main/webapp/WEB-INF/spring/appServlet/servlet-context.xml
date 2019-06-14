@@ -32,7 +32,9 @@
 	<context:component-scan base-package="com.retro.controller" />
 	<context:component-scan base-package="com.retro.service" />
 	<context:component-scan base-package="com.retro.persistence" />
+		<context:component-scan base-package="com.retro.aop" />
  
+ 	<!--aop의 설정으로 Proxy 객체를 자동으로 생성  -->
   	<aop:aspectj-autoproxy />
 
 	<!-- 인터셉터 빈을 등록  -->

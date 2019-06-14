@@ -27,12 +27,13 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void update(BoardDTO bDto) {
 		
+	  sqlSession.update("board.update", bDto);
 		
 	}
 
 	@Override
 	public void delete(int bno) {
-		
+		sqlSession.delete("board.delete", bno);
 		
 	}
 

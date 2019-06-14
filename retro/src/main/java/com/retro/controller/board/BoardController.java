@@ -94,16 +94,39 @@ public class BoardController {
 	public String createPlay(BoardDTO bDto) {
 		log.info("게시글 등록 페이지 출력! 실제입력!");
 		service.create(bDto);
+	
 		
-		
-		return "redirect:/board/list"; 
+		return "redirect:/board/view?bno=" + bDto.getBno(); 
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String updateView() {
+	public String updateView(int bno, Model model) {
 		
-				
+		BoardDTO bDto = service.read(bno);
+		
+		 model.addAttribute("one", bDto);	
+		 
 		return "board/modify"; 
 	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updatePlay(BoardDTO bDto) {
+		
+		service.update(bDto);
+		log.info(">>>>>>>>>>>게시글 수정 동작" + bDto.toString());
+				
+		return "redirect:/board/list"; 
+	}
+	
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(int bno) {
+		
+		service.delete(bno);
+		
+				
+		return "redirect:/board/list"; 
+	}
+	
 	
 }

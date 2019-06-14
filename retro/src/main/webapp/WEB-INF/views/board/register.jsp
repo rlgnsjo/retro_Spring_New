@@ -297,7 +297,7 @@
 				<div class="form-group" style="width: 750px;">
 					<label for="content">내용</label>
 					<textarea class="form-control" id="content" name="content" rows="10" cols="100"></textarea>
-					<script type="text/javascript">
+						<script type="text/javascript">
 							var oEditors = [];
 							nhn.husky.EZCreator.createInIFrame({
 							 oAppRef: oEditors,

@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c"  %>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/fmt" prefix= "fmt"  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <%@  include file="../include/header.jsp"%>
-           
+  <c:if test="${sessionScope.user }"></c:if>          
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,17 +214,17 @@
 		margin-left: 8px;
 	}
 	 .modal{
-	           display: none; 
-	           position: fixed; 
-	           z-index: 1; 
-	           left: 0;
-	           top: 0;
-	           width: 100%; 
-	           height: 100%; 
-	           overflow: auto; 
-	           background-color: rgb(0,0,0); 
-	           background-color: rgba(0,0,0,0.4); 
-	       }
+          display: none; 
+          position: fixed; 
+          z-index: 1; 
+          left: 0;
+          top: 0;
+          width: 100%; 
+          height: 100%; 
+          overflow: auto; 
+          background-color: rgb(0,0,0); 
+          background-color: rgba(0,0,0,0.4); 
+      }
 	         
      .modal-content {
          background-color: #fefefe;           
@@ -265,7 +266,7 @@
 </style>
 </head>
 
-<script type="text/javascript" src="${path}/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="${path}/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	$(document).on("click", ".btn-primary", function(){
 		var title = $("#title").val();
@@ -373,7 +374,7 @@
 	
 	
 </script>
-<script type="text/javascript" src="${path}/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="${path}/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <body>
 <div id="board_wrap">
 		<div class="box box-primary">
@@ -387,100 +388,89 @@
 			<div class="box-body">
 				<div class="form-group">
 					<label for="title">제목</label>					
-					<input type="text" value="${one.title}" id="title" name="title" class="form-control" >
+					<input type="text" value="${one.title}" id="title" name="title"  class="form-control" >
 					<span class="error">제목을 입력해 주세요.</span>
 				</div>
 				<div class="form-group" style="width: 750px;">
 					<label for="content"></label>
 					<textarea class="form-control" id="content" name="content" rows="10" cols="100"><p>${one.content}</p></textarea>
-					<script type="text/javascript">
-						var oEditors = [];
-						nhn.husky.EZCreator.createInIFrame({
-						 oAppRef: oEditors,
-						 elPlaceHolder: "content",
-						 sSkinURI: "<%= request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",
-						 fCreator: "createSEditor2"
-						});
-		
-					</script>
+						<script type="text/javascript">
+							var oEditors = [];
+							nhn.husky.EZCreator.createInIFrame({
+							 oAppRef: oEditors,
+							 elPlaceHolder: "replyInsert",
+							 sSkinURI: "${path}/resources/smarteditor/SmartEditor2Skin.html",
+							 fCreator: "createSEditor2",
+							 htParams: {fOnBeforeUnload : function(){}}
+							});
+							</script>
 				</div>
 				<div class="forn-group">
 					<label for="writer">작성자</label>
 					<input value="${one.writer}" type="text" id="writer" name="writer" class="form-control"value="${sessionScope.userid}"  readonly="readonly">
 					<input type="button" class="btn btn-file" value="현재 첨부파일"> 
-					<c:choose>
-						<c:when test="${one.filesize > 0}">
-							<div id="file_list" style="display: inline-block;">
-								<span class="close_file_btn" id="file_list_filename" style="height:29px; border: none; color: #363636;">${one.filename}</span>
-								<c:choose>
-									<c:when test="${one.filesize > 1024 * 1024}">
-										<span class="file_list_filesize">(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024 / 1024}"></fmt:formatNumber> MB)</span>
-									</c:when>
-									<c:otherwise>
-										<span class="file_list_filesize">(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024}"></fmt:formatNumber> KB)</span>
-									</c:otherwise>
-								</c:choose>
-								<i class="fas fa-times close_file_btn" style="display: inline-block;"></i>
-								<span class="file_msg">[첨부파일 삭제됨]
-									<i class="fas fa-check" id="open_file_btn"></i>
-								</span>
-							</div>
-						</c:when>
-						<c:otherwise>
-						</c:otherwise>
-					</c:choose>		
-				</div>
-				<div id="file_wrap">
-					<input type="file" name="uploadfile" id="uploadfile" style="display: none">
-					<input type="button" class="btn btn-file" value="파일 선택" id="file_submit"> 	
-					 <%-- <c:if test="${one.filesize > 0}">
-					${one.filename}
-					</c:if> --%>						
-			 	<c:choose>
-					 <c:when test="${one.filesize > 0}">
-					 <span class="files" id="file_list_filename" style="height:29px; border: none; color: #363636;">${one.filename}</span>
-						
-						</c:when>
-						<c:otherwise><span class="file_msg">[첨부파일 삭제됨]
-									<i class="fas fa-check" id="open_file_btn"></i>
-								</span>
-						</c:otherwise>						
-				</c:choose> 							
-					
-					<i class="fas fa-check open_file_btn"></i>
-					<i class="fas fa-time close_file_btn close_basic_btn"></i>
-					<span id="now-file-size" ></span>
-					
-					
-					<i class="fas fa-times" id="close_file_btn" style="display: none"></i>
-				</div>
+			 <c:choose>
+				<c:when test="${one.filesize > 0}">
+					<div id="file_list" style="display: inline-block;">
+						<span class="close_file_btn" id="file_list_filename" style="height:29px; border: none; color: #363636;">${one.filename}</span>
+						<c:choose>
+							<c:when test="${one.filesize > 1024 * 1024}">
+								<span class="file_list_filesize">(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024 / 1024}"></fmt:formatNumber> MB)</span>
+							</c:when>
+							<c:otherwise>
+								<span class="file_list_filesize">(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024}"></fmt:formatNumber> KB)</span>
+							</c:otherwise>
+						</c:choose>
+						<i class="fas fa-times close_file_btn" style="display: inline-block;"></i>
+						<span class="file_msg">[첨부파일 삭제됨]
+							<i class="fas fa-check" id="open_file_btn"></i>
+						</span>
+					</div>
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+			</c:choose>		
 			</div>
+			<div id="file_wrap">
+				<input type="file" name="uploadfile" id="uploadfile" style="display: none">
+				<<input type="button" class="btn btn-file" value="파일 선택" id="file_submit"> 	
+				  <c:if test="${one.filesize > 0}">
+				${one.filename}
+				</c:if> --%>						
+	 	 <c:choose>
+			 <c:when test="${one.filesize > 0}">
+			 <span class="files" id="file_list_filename" style="height:29px; border: none; color: #363636;">${one.filename}</span>
+				
+				</c:when>
+				<c:otherwise><span class="file_msg">[첨부파일 삭제됨]
+							<i class="fas fa-check" id="open_file_btn"></i>
+						</span>
+				</c:otherwise>						
+		</c:choose>  						
+				
+				<i class="fas fa-check open_file_btn"></i>
+				<i class="fas fa-time close_file_btn close_basic_btn"></i>
+				<span id="now-file-size" ></span>
+				
+				
+				<i class="fas fa-times" id="close_file_btn" style="display: none"></i>
+			</div>  
+		</div>
 			<div>
 				<button class="btn btn-primary" id="btn-primary">게시글 수정</button>
 			</div>				
-				<input type="hidden" value="${one.bno}" name="bno"  >
-				<input type="hidden" value="${one.filesize}" name="basic_file" >
-				<input type="hidden" value="${one.filename}" name="basic_file_name" >
-				<input type="hidden" value="yes" name="basic_check" id="basic_check">			
+			 <input type="hidden" value="${one.bno}" name="bno" >  
+				<%--  <input type="hidden" value="${one.filesize}" name="basic_file" >
+				<input type="hidden" value="${one.filename}" name="basic_file_name" >  --%>
+				 <input type="hidden" value="yes" name="basic_check" id="basic_check">			
 			</form>
 		</div>
 	</div>
 	
-		<<!-- div id="modal_all">     
-         <div id="content_layout">
-             <div id="modal_header">게시글 삭제 <span id="close_btn"><i class="fa fa-close"></i></span></div>
-             <div id="modal_content">정말 <span class="point">게시글</span>을 삭제하시겠습니까?</div>
-            
-            <div class="btn_login">
-                <a id="no_btn" href="#">아니오</a>
-                <a id="yes_btn" href="#">네</a>
-            </div>
-         </div>
-    </div>  -->
+		
 	
 	
 	
-	
-	<%@ include file="../include/footer.jsp"%>	
+<%@ include file="../include/footer.jsp"%>	
 </body>
 </html>
